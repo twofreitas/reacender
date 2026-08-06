@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Reacender — Reconstrua a conexão do seu relacionamento</title>
+<meta name="description" content="Descubra como reacender a paixão, a intimidade e a cumplicidade que fizeram vocês se apaixonarem. Método Reacender: 7 módulos, bônus exclusivos, garantia de 7 dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --text:#F4F3F1;
+    --text-dim:#9C9A97;
+    --text-faint:#66645F;
+    --wine:#7A001C;
+    --wine-bright:#A6002B;
+    --wine-glow:rgba(122,0,28,.45);
+    --white:#F4F3F1;
+    --ease:cubic-bezier(.16,.8,.24,1);
+    --col:min(560px, 90vw);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;background:var(--bg);}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+  /* ---------- CORE LAYOUT: single narrow column, centered ---------- */
+  .feed{
+    max-width:var(--col);
+    margin:0 auto;
+    padding:0 24px;
+    text-align:center;
+  }
+
+  /* ---------- Blocks: each "mental card" in the feed ---------- */
+  .block{
+    padding:64px 0;
+    position:relative;
+  }
+  .block + .block{} /* no separators between blocks, spacing only */
+  .block--tight{padding:32px 0;}
+  .block--spacious{padding:96px 0;}
+
+  /* ---------- Typography ---------- */
+  h1,h2,h3{font-weight:700;letter-spacing:-0.02em;line-height:1.1;}
+  .headline{
+    font-size:clamp(32px,5.5vw,52px);
+    font-weight:700;
+    letter-spacing:-0.025em;
+    line-height:1.05;
+  }
+  .subheadline{
+    font-size:clamp(20px,3vw,28px);
+    font-weight:600;
+    letter-spacing:-0.015em;
+    line-height:1.15;
+    margin-top:20px;
+  }
+  .body-text{
+    color:var(--text-dim);
+    font-size:clamp(15px,2vw,17px);
+    line-height:1.7;
+    margin-top:16px;
+  }
+  .body-text strong{color:var(--text);font-weight:600;}
+  .label{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--wine-bright);
+    margin-bottom:16px;
+  }
+  .label::before{content:"";width:22px;height:1px;background:var(--wine-bright);display:inline-block;}
+
+  /* keyword highlight */
+  .hl{color:var(--wine-bright);font-weight:700;}
+
+  /* ---------- Ember glow (brasa pulsante) ---------- */
+  .ember{
+    display:block;margin:0 auto;
+    width:140px;height:6px;
+    background:radial-gradient(closest-side,var(--wine-glow),transparent 70%);
+    filter:blur(2px);
+    animation:emberBreathe 6s ease-in-out infinite;
+  }
+  @keyframes emberBreathe{
+    0%,100%{opacity:.35;transform:scaleX(1);}
+    50%{opacity:.9;transform:scaleX(1.6);}
+  }
+  .ember-line{
+    position:relative;height:1px;width:100%;max-width:var(--col);margin:0 auto;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.08) 20%,rgba(255,255,255,.08) 80%,transparent);
+  }
+  .ember-line::after{
+    content:"";position:absolute;top:50%;left:50%;
+    width:140px;height:6px;transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side,var(--wine-glow),transparent 70%);
+    animation:emberBreathe 6s ease-in-out infinite;
+    filter:blur(2px);
+  }
+
+  /* ---------- Icon ---------- */
+  .icon-center{
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 12px;
+    width:40px;height:40px;
+  }
+  .icon-center svg{width:28px;height:28px;stroke:var(--wine-bright);stroke-width:1.8;}
+
+  /* ---------- CTA Button ---------- */
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:16px 36px;border-radius:100px;
+    font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    background:var(--white);color:#090909;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+    position:relative;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(244,243,241,.14);}
+  .cta-note{
+    display:block;margin-top:12px;
+    font-size:12px;color:var(--text-faint);
+  }
+
+  /* ---------- Nav (minimal, floating) ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s var(--ease),background .4s var(--ease);
+  }
+  .nav.scrolled{border-bottom-color:rgba(255,255,255,.06);background:rgba(0,0,0,.85);}
+  .nav-inner{
+    max-width:var(--col);margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-size:14px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--wine-bright);box-shadow:0 0 10px var(--wine-bright);}
+  .nav-cta{
+    font-size:12px;font-weight:700;letter-spacing:.02em;
+    padding:10px 20px;border-radius:100px;
+    background:var(--white);color:#090909;
+    transition:transform .3s var(--ease);
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+
+  /* ---------- Module rows (cinematic vertical) ---------- */
+  .module-block{
+    padding:56px 0;
+    text-align:center;
+  }
+  .module-num{
+    font-size:clamp(48px,8vw,90px);
+    font-weight:900;line-height:1;letter-spacing:-0.02em;
+    color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.1);
+    margin-bottom:20px;
+    user-select:none;
+    transition:-webkit-text-stroke-color .8s var(--ease);
+  }
+  .module-block.active .module-num{-webkit-text-stroke-color:var(--wine-bright);}
+
+  /* ---------- Bonus items (vertical feed) ---------- */
+  .bonus-block{padding:40px 0;}
+  .bonus-tag{
+    font-size:11px;font-weight:800;letter-spacing:.14em;
+    color:var(--wine-bright);text-transform:uppercase;
+    margin-bottom:8px;display:block;
+  }
+
+  /* ---------- Testimonials (vertical, no card) ---------- */
+  .testi-block{
+    padding:48px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .testi-block:last-child{border-bottom:none;}
+  .testi-who{
+    font-size:14px;font-weight:700;color:var(--text);
+    margin-bottom:4px;
+  }
+  .testi-role{font-size:12px;color:var(--text-faint);margin-bottom:14px;}
+  .stars{display:flex;gap:3px;justify-content:center;margin-bottom:14px;}
+  .stars svg{width:14px;height:14px;fill:var(--wine-bright);stroke:none;}
+  .testi-quote{
+    color:var(--text-dim);font-size:15px;line-height:1.7;
+    font-style:italic;
+    max-width:440px;margin:0 auto;
+  }
+
+  /* ---------- Offer ---------- */
+  .offer-block{
+    padding:80px 0;
+    position:relative;
+  }
+  .offer-glow{
+    position:absolute;top:-20%;left:50%;transform:translateX(-50%);
+    width:300px;height:300px;
+    background:radial-gradient(closest-side, var(--wine-glow), transparent 70%);
+    filter:blur(60px);opacity:.45;pointer-events:none;
+    animation:emberBreathe 7s ease-in-out infinite;
+  }
+  .offer-inner{position:relative;z-index:1;}
+  .offer-old{font-size:16px;color:var(--text-faint);text-decoration:line-through;margin-bottom:4px;}
+  .offer-price{font-size:clamp(48px,10vw,72px);font-weight:900;letter-spacing:-0.03em;margin-bottom:4px;}
+  .offer-price span{font-size:22px;font-weight:700;vertical-align:super;}
+  .offer-cycle{font-size:13px;color:var(--text-dim);margin-bottom:28px;}
+  .offer-list{text-align:left;margin:0 auto 28px;max-width:360px;}
+  .offer-list-item{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:10px 0;font-size:14px;color:var(--text-dim);
+  }
+  .offer-list-item svg{flex:0 0 auto;width:16px;height:16px;stroke:var(--wine-bright);margin-top:2px;}
+  .guarantee{
+    margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px;
+    font-size:12px;color:var(--text-faint);
+  }
+  .guarantee svg{width:14px;height:14px;stroke:var(--text-faint);}
+
+  /* ---------- FAQ (flat, no accordion) ---------- */
+  .faq-pair{
+    padding:32px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    text-align:left;
+  }
+  .faq-pair:last-child{border-bottom:none;}
+  .faq-q{font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.4;}
+  .faq-a{font-size:14.5px;color:var(--text-dim);line-height:1.7;}
+
+  /* ---------- Check item (simple) ---------- */
+  .check-row{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:14px 0;
+    text-align:left;
+    max-width:400px;margin:0 auto;
+  }
+  .check-dot{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+    background:rgba(122,0,28,.16);border:1px solid rgba(122,0,28,.4);
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .check-dot svg{width:12px;height:12px;stroke:var(--wine-bright);stroke-width:3;}
+  .check-row span{font-size:15px;color:var(--text);font-weight:500;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:60px 24px 40px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+  .footer-brand{font-size:13px;font-weight:800;letter-spacing:.04em;margin-bottom:10px;}
+  .footer-copy{font-size:12px;color:var(--text-faint);line-height:1.7;}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--wine-bright);outline-offset:3px;border-radius:6px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:640px){
+    .block{padding:48px 0;}
+    .block--spacious{padding:72px 0;}
+    .headline{font-size:clamp(28px,7vw,40px);}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>REACENDER</div>
+    <a href="#oferta" class="nav-cta">Quero começar</a>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<div class="feed" style="padding-top:120px;">
+
+  <div class="block block--spacious reveal">
+    <span class="label">Método Reacender</span>
+    <h1 class="headline">O relacionamento esfriou...<br>mas talvez ainda exista uma forma de <span class="hl">reacender a chama</span>.</h1>
+    <p class="body-text" style="max-width:480px;margin:20px auto 0;">A maioria dos casais acredita que <strong>perdeu a conexão para sempre</strong>. Na verdade, são pequenos hábitos do dia a dia que vão afastando duas pessoas — até parecer que só restou a <strong>rotina</strong>.</p>
+  </div>
+
+  <div class="block block--tight reveal">
+    <p class="body-text" style="max-width:460px;margin:0 auto;">Descubra como reconstruir a <strong>intimidade</strong>, a <strong>admiração</strong> e a vontade genuína de estarem juntos de novo.</p>
+    <div style="margin-top:32px;">
+      <a href="#oferta" class="cta">Quero reacender nossa conexão</a>
+      <span class="cta-note">Acesso imediato · Garantia de 7 dias</span>
+    </div>
+  </div>
+
+  <div class="ember-line" style="margin:32px auto;"></div>
+
+  <!-- ======== O PROBLEMA ======== -->
+  <div class="block reveal">
+    <span class="label">O que está acontecendo</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">O problema nunca foi<br><span class="hl">falta de amor</span>.</h2>
+    <p class="body-text" style="max-width:460px;margin:18px auto 0;">É uma soma silenciosa de <strong>pequenos comportamentos</strong> — nenhum deles parece grave sozinho, mas juntos vão abrindo uma distância que <strong>ninguém escolheu</strong>.</p>
+  </div>
+
+  <div id="problem-feed"></div>
+
+  <div class="block block--tight reveal">
+    <p class="body-text" style="max-width:500px;margin:0 auto;">Esses pequenos comportamentos vão criando <strong>distância emocional</strong> até que, um dia, parece que vocês viraram apenas <strong>colegas de casa</strong>. A boa notícia: se a distância foi construída aos poucos, ela também pode ser <strong>desfeita aos poucos</strong>.</p>
+  </div>
+
+  <!-- CTA repeat 1 -->
+  <div class="block block--tight reveal">
+    <a href="#oferta" class="cta">Quero começar agora</a>
+  </div>
+
+  <div class="ember-line" style="margin:16px auto;"></div>
+
+  <!-- ======== IMAGINE VOLTAR A SENTIR ======== -->
+  <div class="block reveal">
+    <span class="label">O que é possível reconstruir</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">Imagine voltar a sentir...</h2>
+  </div>
+
+  <div id="imagine-feed"></div>
+
+  <div class="ember-line" style="margin:32px auto;"></div>
+
+  <!-- ======== MÓDULOS ======== -->
+  <div class="block reveal">
+    <span class="label">Dentro do método</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">O que você vai descobrir</h2>
+    <p class="body-text" style="max-width:440px;margin:14px auto 0;">Cada etapa foi organizada para <strong>reconstruir a conexão</strong> entre vocês de forma progressiva.</p>
+  </div>
+
+  <div id="modules-feed"></div>
+
+  <!-- CTA repeat 2 -->
+  <div class="block block--tight reveal">
+    <a href="#oferta" class="cta">Quero começar agora</a>
+  </div>
+
+  <div class="ember-line" style="margin:16px auto;"></div>
+
+  <!-- ======== BÔNUS ======== -->
+  <div class="block reveal">
+    <span class="label">Incluso no acesso</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">Bônus exclusivos para<br>colocar tudo em prática</h2>
+  </div>
+
+  <div id="bonus-feed"></div>
+
+  <div class="ember-line" style="margin:32px auto;"></div>
+
+  <!-- ======== DEPOIMENTOS ======== -->
+  <div class="block reveal">
+    <span class="label">Histórias reais</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">Casais que decidiram<br>tentar de novo</h2>
+    <p class="body-text" style="font-size:12px;color:var(--text-faint);margin-top:12px;">Exemplos ilustrativos — espaço reservado para depoimentos reais de alunos.</p>
+  </div>
+
+  <div id="testi-feed"></div>
+
+  <div class="ember-line" style="margin:32px auto;"></div>
+
+  <!-- ======== PARA QUEM É ======== -->
+  <div class="block reveal">
+    <span class="label">Para quem é</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">Feito para quem<br><span class="hl">ainda quer tentar</span>.</h2>
+    <p class="body-text" style="max-width:440px;margin:14px auto 0;">Não importa há quanto tempo vocês estão juntos — o que importa é a <strong>vontade de recomeçar</strong>.</p>
+  </div>
+
+  <div id="who-feed"></div>
+
+  <!-- CTA repeat 3 -->
+  <div class="block block--tight reveal">
+    <a href="#oferta" class="cta">Quero começar agora</a>
+  </div>
+
+  <div class="ember-line" style="margin:32px auto;"></div>
+
+  <!-- ======== OFERTA ======== -->
+  <div class="block offer-block reveal" id="oferta">
+    <div class="offer-glow"></div>
+    <div class="offer-inner">
+      <span class="label">A decisão é sua</span>
+      <h2 class="headline" style="font-size:clamp(22px,4vw,36px);max-width:480px;margin:0 auto;">Continuar deixando a rotina afastar vocês... ou <span class="hl">começar hoje</span> a reconstruir essa conexão.</h2>
+      <div style="margin-top:48px;">
+        <div class="offer-old">De R$197</div>
+        <div class="offer-price">R$37<span>,00</span></div>
+        <div class="offer-cycle">pagamento único · acesso vitalício</div>
+        <div class="offer-list" id="offer-list"></div>
+        <a href="#" class="cta" style="width:100%;max-width:360px;">Quero começar agora</a>
+        <div class="guarantee">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          Garantia incondicional de 7 dias · Pagamento 100% seguro
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ember-line" style="margin:16px auto;"></div>
+
+  <!-- ======== FAQ ======== -->
+  <div class="block reveal">
+    <span class="label">Dúvidas frequentes</span>
+    <h2 class="headline" style="font-size:clamp(26px,4.5vw,42px);">Perguntas frequentes</h2>
+  </div>
+
+  <div id="faq-feed"></div>
+
+  <!-- CTA final -->
+  <div class="block reveal">
+    <a href="#oferta" class="cta">Quero começar agora</a>
+    <span class="cta-note">Acesso imediato · Garantia de 7 dias</span>
+  </div>
+
+</div><!-- /.feed -->
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="footer-brand">REACENDER</div>
+  <p class="footer-copy">© 2026 Método Reacender. Todos os direitos reservados.</p>
+  <p class="footer-copy" style="margin-top:6px;">Este produto não substitui aconselhamento profissional de terapia de casal.</p>
+</footer>
+
+<script>
+// ---------- Icon library ----------
+const icons = {
+  routine: '<path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/>',
+  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+  heart: '<path d="M19 14c1.5-1.4 3-3.1 3-5.2A4.8 4.8 0 0 0 17.2 4C15.8 4 14.4 4.8 12 7.2 9.6 4.8 8.2 4 6.8 4A4.8 4.8 0 0 0 2 8.8C2 13 7 16.5 12 21c2.5-2.3 4.5-4.2 7-6.8"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',
+  stress: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>',
+  phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+  spark: '<path d="M12 3v4M12 17v4M4 12h4M16 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/>',
+  smile: '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>',
+  gift: '<rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',
+  puzzle: '<path d="M4 7h4a2 2 0 1 1 0 4H4v4h4a2 2 0 1 1 0 4H4v-4a2 2 0 1 0-4 0v-4a2 2 0 1 0 4 0V7Z" transform="translate(0,0)"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m14.5 9.5-2 5-5 2 2-5 5-2Z"/>',
+  book: '<path d="M4 5c1.5-1 4-1 6 0v14c-2-1-4.5-1-6 0V5Z"/><path d="M20 5c-1.5-1-4-1-6 0v14c2-1 4.5-1 6 0V5Z"/>',
+  moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  checklist: '<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/>',
+  map: '<path d="m9 3-6 2v16l6-2 6 2 6-2V3l-6 2-6-2Z"/><path d="M9 3v16M15 5v16"/>',
+  music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>'
+};
+function svg(name){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`; }
+
+// ---------- Problems (vertical feed blocks) ----------
+const problems = [
+  {icon:'routine', t:'Rotina', d:'Os dias se repetem tanto que vocês esquecem de <strong>olhar um para o outro</strong>.'},
+  {icon:'chat', t:'Conversas superficiais', d:'"Como foi seu dia" virou a conversa <strong>mais profunda</strong> da semana.'},
+  {icon:'heart', t:'Falta de intimidade', d:'O contato físico foi ficando <strong>raro</strong>, quase por acidente.'},
+  {icon:'clock', t:'Pouco tempo juntos', d:'A agenda de dois adultos deixou <strong>pouco espaço</strong> para o casal.'},
+  {icon:'stress', t:'Estresse', d:'O cansaço do trabalho chega em casa <strong>antes</strong> de vocês.'},
+  {icon:'phone', t:'Celular o tempo todo', d:'Vocês estão na mesma sala, mas em <strong>telas diferentes</strong>.'},
+];
+document.getElementById('problem-feed').innerHTML = problems.map(p=>`
+  <div class="block block--tight reveal">
+    <div class="icon-center">${svg(p.icon)}</div>
+    <h3 class="subheadline" style="font-size:19px;margin-top:0;">${p.t}</h3>
+    <p class="body-text" style="max-width:380px;margin:8px auto 0;">${p.d}</p>
+  </div>`).join('');
+
+// ---------- Imagine items (vertical checklist) ----------
+const imagine = [
+  'Conversas leves, sem esforço, como no início',
+  'Abraços espontâneos, sem motivo nenhum',
+  'Encontros especiais, só para vocês dois',
+  'Mais carinho no dia a dia',
+  'Mais desejo, sem forçar nada',
+  'Mais cumplicidade nas pequenas coisas',
+];
+document.getElementById('imagine-feed').innerHTML = '<div class="block block--tight reveal">' +
+  imagine.map(t=>`
+    <div class="check-row">
+      <div class="check-dot">${svg('check')}</div>
+      <span>${t}</span>
+    </div>`).join('') + '</div>';
+
+// ---------- Modules (vertical feed, numbered) ----------
+const modules = [
+  {icon:'spark', t:'Por que a paixão desaparece', d:'O mecanismo psicológico por trás da <strong>rotina</strong> que esfria qualquer relação.'},
+  {icon:'compass', t:'Os erros invisíveis que afastam casais', d:'Comportamentos comuns — e mal compreendidos — que criam <strong>distância</strong> todos os dias.'},
+  {icon:'puzzle', t:'Como reconstruir conexão emocional', d:'Um caminho simples para voltar a se sentir <strong>visto</strong> pelo seu parceiro.'},
+  {icon:'gift', t:'Como surpreender novamente', d:'Formas práticas de sair do <strong>automático</strong> sem depender de grandes gestos.'},
+  {icon:'heart', t:'A arte da sedução dentro do relacionamento', d:'Reacender o <strong>desejo</strong> com naturalidade, sem parecer forçado.'},
+  {icon:'moon', t:'Como manter a paixão viva por muitos anos', d:'Hábitos de casais que continuam <strong>apaixonados</strong> depois de décadas.'},
+  {icon:'calendar', t:'Plano de 30 dias', d:'Um roteiro <strong>dia a dia</strong> para colocar tudo em prática, sem complicação.'},
+];
+document.getElementById('modules-feed').innerHTML = modules.map((m,i)=>`
+  <div class="module-block reveal" data-i="${i}">
+    <div class="module-num">0${i+1}</div>
+    <div class="icon-center">${svg(m.icon)}</div>
+    <h3 class="subheadline" style="margin-top:8px;">${m.t}</h3>
+    <p class="body-text" style="max-width:400px;margin:10px auto 0;">${m.d}</p>
+  </div>`).join('');
+
+// scroll-driven: current module number brightens
+const moduleBlocks = document.querySelectorAll('.module-block');
+const modIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ e.target.classList.toggle('active', e.isIntersecting); });
+},{threshold:0, rootMargin:'-42% 0px -42% 0px'});
+moduleBlocks.forEach(row=>modIO.observe(row));
+
+// ---------- Bonuses (vertical feed) ----------
+const bonuses = [
+  {icon:'mail', tag:'Bônus 01', t:'100 mensagens prontas', d:'Para <strong>reacender a conversa</strong> em qualquer momento do dia.'},
+  {icon:'checklist', tag:'Bônus 02', t:'Checklist do encontro perfeito', d:'Um roteiro simples para planejar <strong>encontros memoráveis</strong>.'},
+  {icon:'map', tag:'Bônus 03', t:'50 ideias de encontros', d:'Programas para todos os <strong>orçamentos</strong> e agendas.'},
+  {icon:'book', tag:'Bônus 04', t:'Cartas românticas', d:'Modelos para dizer o que às vezes é difícil <strong>colocar em palavras</strong>.'},
+  {icon:'calendar', tag:'Bônus 05', t:'Planner do casal', d:'Organize <strong>metas</strong>, datas e momentos importantes juntos.'},
+  {icon:'spark', tag:'Bônus 06', t:'Desafio de 30 dias', d:'Uma ação simples por dia para reconstruir a <strong>intimidade</strong>.'},
+  {icon:'music', tag:'Bônus 07', t:'Playlist exclusiva', d:'A <strong>trilha sonora</strong> para os momentos só de vocês dois.'},
+];
+document.getElementById('bonus-feed').innerHTML = bonuses.map(b=>`
+  <div class="bonus-block reveal">
+    <div class="icon-center">${svg(b.icon)}</div>
+    <span class="bonus-tag">${b.tag}</span>
+    <h3 class="subheadline" style="font-size:18px;margin-top:4px;">${b.t}</h3>
+    <p class="body-text" style="max-width:360px;margin:8px auto 0;">${b.d}</p>
+  </div>`).join('');
+
+// ---------- Testimonials (vertical, no card) ----------
+const testis = [
+  {name:'C. & R. (exemplo)', role:'Juntos há 6 anos', text:'Achávamos que já não tínhamos mais assunto. Hoje voltamos a conversar até tarde, como antes.'},
+  {name:'M. & T. (exemplo)', role:'Casados há 11 anos', text:'O plano de 30 dias nos tirou do automático. Pequenas mudanças que fizeram muita diferença.'},
+  {name:'A. & L. (exemplo)', role:'Namorando há 2 anos', text:'Não precisamos de grandes gestos — só de prestar atenção um no outro de novo.'},
+];
+document.getElementById('testi-feed').innerHTML = testis.map(t=>`
+  <div class="testi-block reveal">
+    <div class="stars">${'<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.6L2 9.6l7.1-.7L12 2z"/></svg>'.repeat(5)}</div>
+    <p class="testi-quote">"${t.text}"</p>
+    <div style="margin-top:14px;">
+      <div class="testi-who">${t.name}</div>
+      <div class="testi-role">${t.role}</div>
+    </div>
+  </div>`).join('');
+
+// ---------- Who is it for (vertical checklist) ----------
+const who = [
+  'Casais que sentem que esfriaram',
+  'Namorados que querem cuidar da relação',
+  'Casados há muitos anos',
+  'Quem quer melhorar a comunicação',
+  'Quem sente falta da paixão do começo',
+];
+document.getElementById('who-feed').innerHTML = '<div class="block block--tight reveal">' +
+  who.map(t=>`
+    <div class="check-row">
+      <div class="check-dot">${svg('check')}</div>
+      <span>${t}</span>
+    </div>`).join('') + '</div>';
+
+// ---------- Offer checklist ----------
+const offerItems = [
+  '7 módulos completos do Método Reacender',
+  '7 bônus exclusivos inclusos',
+  'Acesso imediato e vitalício',
+  'Garantia incondicional de 7 dias',
+];
+document.getElementById('offer-list').innerHTML = offerItems.map(t=>`
+  <div class="offer-list-item">
+    ${svg('check')}
+    <span>${t}</span>
+  </div>`).join('');
+
+// ---------- FAQ (flat, all visible, no accordion) ----------
+const faqs = [
+  {q:'Funciona para qualquer tempo de relacionamento?', a:'Sim. O método foi desenhado para casais em qualquer fase — de namoros recentes a casamentos de décadas — porque trabalha comportamentos, não circunstâncias específicas.'},
+  {q:'Preciso convencer meu parceiro a fazer junto?', a:'Não é obrigatório. Muitas pessoas começam sozinhas e os resultados nas pequenas atitudes já mudam a dinâmica do casal. Mas fazer os dois juntos acelera o processo.'},
+  {q:'Quanto tempo leva para ver resultado?', a:'O plano de 30 dias foi pensado para gerar mudanças perceptíveis já nas primeiras semanas, com ações pequenas e consistentes.'},
+  {q:'Recebo acesso imediato?', a:'Sim. Assim que o pagamento é confirmado, você recebe o acesso a todos os módulos e bônus na hora.'},
+  {q:'Como funciona a garantia de 7 dias?', a:'Se em até 7 dias você sentir que o método não é para você, basta solicitar o reembolso — sem perguntas e sem burocracia.'},
+];
+document.getElementById('faq-feed').innerHTML = '<div class="reveal">' +
+  faqs.map(f=>`
+    <div class="faq-pair">
+      <div class="faq-q">${f.q}</div>
+      <div class="faq-a">${f.a}</div>
+    </div>`).join('') + '</div>';
+
+// ---------- Scroll reveal ----------
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -60px 0px'});
+revealEls.forEach(el=>io.observe(el));
+
+// ---------- Nav scroll state ----------
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', ()=>{
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, {passive:true});
+</script>
+</body>
+</html>

@@ -12,7 +12,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n;
       n.push = n;
@@ -1410,6 +1410,7 @@
 
         <div style="margin-top: 20px;">
           <a href="https://pay.wiapy.com/sV7K8EvWyGe-" id="btn-checkout-principal" class="cta"
+            onclick="fbq('track', 'InitiateCheckout');">
             style="max-width: 100%;">QUERO REACENDER MEU RELACIONAMENTO 🔥</a>
         </div>
 

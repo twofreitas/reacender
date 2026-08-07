@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Além das Quatro Paredes — Guia Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #140315;
+      --bg-plum: #22072a;
+      --bg-plum-2: #2c0a35;
+      --gold: #cda45e;
+      --gold-bright: #e6c07a;
+      --rose: #b5566b;
+      --rose-soft: #d98a94;
+      --cream: #f3e9e3;
+      --cream-dim: #cbb9c4;
+      --line: rgba(205, 164, 94, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: #000;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ PAGE SIMULATION ============ */
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(181, 86, 107, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 92%, rgba(205, 164, 94, 0.12), transparent 40%),
+        linear-gradient(160deg, var(--bg-void) 0%, var(--bg-plum) 55%, var(--bg-plum-2) 100%);
+      overflow: hidden;
+      page-break-after: always;
+      page-break-inside: avoid;
+      padding: 16mm 18mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .frame {
+      position: absolute;
+      inset: 8mm;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--gold);
+    }
+
+    .frame::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+    }
+
+    .page-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      padding-top: 8mm;
+      z-index: 2;
+    }
+
+    .page-footer .rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 0 12px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ============ COVER — PAGE 1 ============ */
+    .cover {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(45deg, rgba(205, 164, 94, 0.025) 0 2px, transparent 2px 40px);
+    }
+
+    .cover .ornament {
+      font-size: 34px;
+      color: var(--rose-soft);
+      margin-bottom: 18px;
+      letter-spacing: 0.4em;
+    }
+
+    .cover .eyebrow {
+      margin-bottom: 26px;
+    }
+
+    .cover h1 {
+      font-size: 58px;
+      line-height: 1.08;
+      font-weight: 900;
+      max-width: 620px;
+      background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, var(--rose-soft) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cover .accent-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--rose-soft);
+      -webkit-text-fill-color: var(--rose-soft);
+    }
+
+    .cover hr.divider {
+      border: none;
+      width: 90px;
+      height: 1px;
+      margin: 30px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .cover .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 21px;
+      color: var(--cream-dim);
+      max-width: 460px;
+      line-height: 1.6;
+    }
+
+    .cover .tagline-box {
+      margin-top: 60px;
+      border: 1px solid var(--line);
+      padding: 14px 30px;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ============ SECTION HEADERS ============ */
+    .section-head {
+      margin-bottom: 10mm;
+    }
+
+    .section-head .num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--rose-soft);
+      letter-spacing: 0.2em;
+    }
+
+    .section-head h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-top: 6px;
+      line-height: 1.1;
+    }
+
+    .section-head .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--cream-dim);
+      font-size: 15px;
+      margin-top: 8px;
+      max-width: 480px;
+    }
+
+    /* ============ CALLOUT BOXES ============ */
+    .box {
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin: 10px 0;
+      position: relative;
+      border: 1px solid;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .box .box-title {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .box.alert {
+      background: linear-gradient(135deg, rgba(181, 86, 107, 0.16), rgba(181, 86, 107, 0.04));
+      border-color: rgba(181, 86, 107, 0.55);
+    }
+
+    .box.alert .box-title {
+      color: var(--rose-soft);
+    }
+
+    .box.secret {
+      background: linear-gradient(135deg, rgba(205, 164, 94, 0.14), rgba(205, 164, 94, 0.03));
+      border-color: rgba(205, 164, 94, 0.55);
+    }
+
+    .box.secret .box-title {
+      color: var(--gold-bright);
+    }
+
+    .box.avoid {
+      background: linear-gradient(135deg, rgba(120, 40, 60, 0.22), rgba(120, 40, 60, 0.05));
+      border-color: rgba(200, 90, 110, 0.4);
+    }
+
+    .box.avoid .box-title {
+      color: #e07f8f;
+    }
+
+    /* ============ CHECKLIST ============ */
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(243, 233, 227, 0.08);
+      font-size: 13px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist .box-check {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      border: 1.5px solid var(--gold);
+      border-radius: 3px;
+      background: rgba(205, 164, 94, 0.06);
+    }
+
+    .checklist .label b {
+      display: block;
+      color: var(--cream);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .checklist .label span {
+      color: var(--cream-dim);
+      font-size: 11.5px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+
+    /* ============ TWO COLUMN LAYOUT ============ */
+    .two-col {
+      display: flex;
+      gap: 14mm;
+      flex: 1;
+    }
+
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--rose-soft);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* ============ COPY & COLE (chat bubbles) ============ */
+    .bubble {
+      background: rgba(20, 3, 21, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 12px 12px 12px 2px;
+      padding: 11px 14px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--cream);
+      margin-bottom: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14.5px;
+      font-style: italic;
+      position: relative;
+    }
+
+    .bubble::before {
+      content: "❝";
+      position: absolute;
+      top: -8px;
+      left: 10px;
+      font-size: 16px;
+      color: var(--gold);
+      font-style: normal;
+      background: var(--bg-plum);
+      padding: 0 4px;
+    }
+
+    /* ============ TECHNIQUE CARDS ============ */
+    .tech-card {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(205, 164, 94, 0.05), transparent);
+    }
+
+    .tech-card h3 {
+      font-size: 17px;
+      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .tech-card .tag {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-soft);
+      border: 1px solid rgba(181, 86, 107, 0.5);
+      border-radius: 20px;
+      padding: 2px 9px;
+      font-family: 'Jost', sans-serif;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .tech-card p {
+      font-size: 12px;
+      color: var(--cream-dim);
+      line-height: 1.5;
+    }
+
+    /* ============ MENU (page 5) ============ */
+    .menu-frame {
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      padding: 20px 26px;
+      flex: 1;
+      position: relative;
+    }
+
+    .menu-frame::before,
+    .menu-frame::after {
+      content: "✦";
+      position: absolute;
+      color: var(--gold);
+      font-size: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .menu-frame::before {
+      top: -8px;
+      background: var(--bg-plum);
+      padding: 0 8px;
+    }
+
+    .menu-frame::after {
+      bottom: -8px;
+      background: var(--bg-plum);
+      padding: 0 8px;
+    }
+
+    .menu-course {
+      margin-bottom: 20px;
+    }
+
+    .menu-course .course-label {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--rose-soft);
+      margin-bottom: 12px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px dotted rgba(205, 164, 94, 0.3);
+    }
+
+    .menu-item .dish {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--cream);
+    }
+
+    .menu-item .desc {
+      flex: 1;
+      text-align: right;
+      font-size: 11px;
+      color: var(--cream-dim);
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* ============ PRINT ============ */
+    @media print {
+      body {
+        background: #000;
+      }
+
+      .page {
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    /* Screen-only nicety: shadow between simulated pages */
+    @media screen {
+      .page {
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        margin-bottom: 24px;
+      }
+
+      body {
+        padding: 30px 0;
+        background: #000;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================ -->
+  <!-- PÁGINA 1 — CAPA -->
+  <!-- ============================================================ -->
+  <section class="page cover">
+    <div class="frame"></div>
+    <div class="content" style="align-items:center; justify-content:center;">
+      <div class="ornament">✦ ✦ ✦</div>
+      <div class="eyebrow">Guia Visual Prático · Edição Íntima</div>
+      <h1>ALÉM DAS<br><span class="accent-word">Quatro Paredes</span></h1>
+      <hr class="divider">
+      <p class="subtitle">O guia visual para incendiar a Hora H — sem enrolação, sem fórmula pronta, só o que funciona
+        de verdade entre vocês dois.</p>
+      <div class="tagline-box">Método Reacender · Casais que ousam sair do automático</div>
+    </div>
+    <div class="page-footer">
+      <span>01</span>
+      <div class="rule"></div><span>Além das Quatro Paredes</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PÁGINA 2 — O BOTÃO DE EMERGÊNCIA -->
+  <!-- ============================================================ -->
+  <section class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Cap. 01</div>
+        <h2>O Botão de Emergência</h2>
+        <p class="sub">A rotina se instala em silêncio. Estas são as atitudes que interrompem o piloto automático —
+          nenhuma leva mais de 2 minutos.</p>
+      </div>
+
+      <ul class="checklist">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Toque sem motivo</b><span>Passe a mão nas costas dele/dela ao cruzar pela casa. Sem
+              anunciar, sem explicar.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Olhar que demora</b><span>Segure o olhar 3 segundos além do normal, antes de sair de
+              casa.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Mensagem sem contexto</b><span>Envie algo picante no meio da tarde, sem introdução, sem
+              aviso.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Beijo com pausa</b><span>Na despedida, beije devagar — um segundo a mais do que o
+              costume já pede.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Elogio ao corpo</b><span>Não elogie a roupa. Elogie o corpo por baixo dela.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Sussurro na saída</b><span>Uma frase baixa no ouvido, antes de qualquer um dos dois sair
+              pela porta.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Bilhete escondido</b><span>Um papel curto na bolsa, no bolso do casaco ou no
+              carro.</span></div>
+        </li>
+      </ul>
+
+      <div class="box secret">
+        <span class="box-title">💡 Truque Secreto</span>
+        Escolham 1 item por dia — nunca todos de uma vez. O desejo se constrói por repetição pequena, não por overdose.
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>02</span>
+      <div class="rule"></div><span>Cap. 01 — Botão de Emergência</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PÁGINA 3 — COPIE E COLE -->
+  <!-- ============================================================ -->
+  <section class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Cap. 02</div>
+        <h2>Copie e Cole</h2>
+        <p class="sub">Roteiros prontos para o WhatsApp. Escolha, adapte ao seu tom e envie sem pensar duas vezes.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">Para enviar a ela</div>
+          <div class="bubble">Passei o dia com uma cena sua na cabeça. Não vou contar qual — você vai descobrir hoje à
+            noite.</div>
+          <div class="bubble">Separa um tempo pra mim mais tarde. Não é sobre o dia corrido. É sobre nós dois, só isso.
+          </div>
+          <div class="bubble">Lembrei de como você fica quando eu chego perto e não digo nada. Chega logo.</div>
+          <div class="bubble">Hoje eu quero ser eu a te surpreender. Só se arrume — o resto é comigo.</div>
+        </div>
+        <div class="col">
+          <div class="col-title">Para enviar a ele</div>
+          <div class="bubble">Não vou dizer o que estou vestindo agora. Vou deixar você imaginar até chegar em casa.
+          </div>
+          <div class="bubble">Hoje a noite é nossa. Guarda energia — vou cobrar isso mais tarde.</div>
+          <div class="bubble">Fiquei pensando no seu jeito de me olhar ontem. Quero ver esse olhar de novo hoje.</div>
+          <div class="bubble">Chega em casa e esquece o celular na entrada. O resto da noite eu cuido.</div>
+        </div>
+      </div>
+
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Mande a mensagem e não sustente o assunto por texto. Deixe a tensão aberta até o encontro presencial — é isso
+        que gera antecipação real.
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>03</span>
+      <div class="rule"></div><span>Cap. 02 — Copie e Cole</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PÁGINA 4 — GUIA VISUAL DA HORA H -->
+  <!-- ============================================================ -->
+  <section class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Cap. 03</div>
+        <h2>Guia Visual da Hora H</h2>
+        <p class="sub">Três formas de quebrar o automático. Sem cobrança de performance — só presença e intenção.</p>
+      </div>
+
+      <div class="tech-card">
+        <span class="tag">Ritmo</span>
+        <h3>Ritmo Invertido</h3>
+        <p>Alterne entre movimentos bem lentos e pausas completas. A pausa gera mais expectativa do que a continuidade —
+          deixe o corpo esperar.</p>
+      </div>
+
+      <div class="tech-card">
+        <span class="tag">Comando</span>
+        <h3>Troca de Comando</h3>
+        <p>Combinem antes: por essa noite, quem normalmente é mais passivo(a) assume o controle total do ritmo e das
+          decisões.</p>
+      </div>
+
+      <div class="tech-card">
+        <span class="tag">Conexão</span>
+        <h3>Respiração Sincronizada</h3>
+        <p>Tentem respirar no mesmo ritmo um do outro nos momentos de maior intensidade. Simples de fazer, muda
+          completamente a sensação de conexão.</p>
+      </div>
+
+      <div class="box secret">
+        <span class="box-title">💡 Truque Secreto</span>
+        Mantenham uma luz baixa acesa — vela ou abajur — em vez do escuro total. Olhar nos olhos no auge muda a
+        experiência inteira.
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>04</span>
+      <div class="rule"></div><span>Cap. 03 — Guia Visual da Hora H</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PÁGINA 5 — MENU DO PRAZER -->
+  <!-- ============================================================ -->
+  <section class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Cap. 04</div>
+        <h2>Menu do Prazer</h2>
+        <p class="sub">O desafio do fim de semana. Escolham juntos — ou sorteiem — o que vão praticar.</p>
+      </div>
+
+      <div class="menu-frame">
+        <div class="menu-course">
+          <div class="course-label">✦ Entrada ✦</div>
+          <div class="menu-item"><span class="dish">Aperitivo Sussurrado</span><span class="desc">5 min de provocação só
+              com palavras, sem toque</span></div>
+        </div>
+
+        <div class="menu-course">
+          <div class="course-label">✦ Prato Principal — Escolha Um ✦</div>
+          <div class="menu-item"><span class="dish">Especial da Casa</span><span class="desc">O clássico do casal, feito
+              com mais tempo que o normal</span></div>
+          <div class="menu-item"><span class="dish">Prato Novo do Chef</span><span class="desc">Uma técnica do Cap. 03
+              ainda não testada</span></div>
+          <div class="menu-item"><span class="dish">Menu Surpresa</span><span class="desc">Um escreve 3 opções, o outro
+              sorteia sem saber</span></div>
+        </div>
+
+        <div class="menu-course" style="margin-bottom:0;">
+          <div class="course-label">✦ Sobremesa ✦</div>
+          <div class="menu-item" style="border-bottom:none;"><span class="dish">Fecho Sem Pressa</span><span
+              class="desc">10 min de carinho depois, sem celular, sem pressa</span></div>
+        </div>
+      </div>
+
+      <div class="box avoid" style="margin-top:14px;">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Deixar para "semana que vem" quando surgir imprevisto. Marquem a data no calendário — e cumpram como um
+        compromisso real.
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>05</span>
+      <div class="rule"></div><span>Cap. 04 — Menu do Prazer</span>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Além das Quatro Paredes — O Guia Visual Definitivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #12001d;
+      --bg-plum: #1a002c;
+      --bg-plum-2: #250236;
+      --gold: #cda45e;
+      --gold-bright: #e6c07a;
+      --rose: #b5566b;
+      --rose-soft: #d98a94;
+      --cream: #f3e9e3;
+      --cream-dim: #cbb9c4;
+      --line: rgba(205, 164, 94, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: #000;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ PAGE SIMULATION ============ */
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(181, 86, 107, 0.16), transparent 45%),
+        radial-gradient(circle at 88% 92%, rgba(205, 164, 94, 0.10), transparent 40%),
+        linear-gradient(160deg, var(--bg-void) 0%, var(--bg-plum) 55%, var(--bg-plum-2) 100%);
+      overflow: hidden;
+      padding: 16mm 18mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .frame {
+      position: absolute;
+      inset: 8mm;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--gold);
+    }
+
+    .frame::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-size: 9.5px;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+    }
+
+    .page-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      padding-top: 6mm;
+      z-index: 2;
+    }
+
+    .page-footer .rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 0 12px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ============ COVER ============ */
+    .cover {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover .ornament {
+      font-size: 30px;
+      color: var(--rose-soft);
+      margin-bottom: 16px;
+      letter-spacing: 0.4em;
+    }
+
+    .cover .eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .cover h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      font-weight: 900;
+      max-width: 640px;
+      background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, var(--rose-soft) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cover .accent-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--rose-soft);
+      -webkit-text-fill-color: var(--rose-soft);
+    }
+
+    .cover hr.divider {
+      border: none;
+      width: 90px;
+      height: 1px;
+      margin: 26px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .cover .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--cream-dim);
+      max-width: 460px;
+      line-height: 1.6;
+    }
+
+    .cover .tagline-box {
+      margin-top: 50px;
+      border: 1px solid var(--line);
+      padding: 12px 28px;
+      font-size: 10.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ============ SECTION HEADERS ============ */
+    .section-head {
+      margin-bottom: 8mm;
+    }
+
+    .section-head .num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--rose-soft);
+      letter-spacing: 0.18em;
+    }
+
+    .section-head h2 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-top: 5px;
+      line-height: 1.15;
+    }
+
+    .section-head .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--cream-dim);
+      font-size: 14px;
+      margin-top: 7px;
+      max-width: 490px;
+    }
+
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--cream);
+    }
+
+    .body-text p {
+      margin-bottom: 11px;
+    }
+
+    .body-text b {
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+
+    .body-text i {
+      color: var(--rose-soft);
+    }
+
+    /* ============ CALLOUT BOXES ============ */
+    .box {
+      border-radius: 4px;
+      padding: 13px 17px;
+      margin: 10px 0;
+      position: relative;
+      border: 1px solid;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .box .box-title {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      margin-bottom: 6px;
+    }
+
+    .box.alert {
+      background: linear-gradient(135deg, rgba(181, 86, 107, 0.16), rgba(181, 86, 107, 0.04));
+      border-color: rgba(181, 86, 107, 0.55);
+    }
+
+    .box.alert .box-title {
+      color: var(--rose-soft);
+    }
+
+    .box.secret {
+      background: linear-gradient(135deg, rgba(205, 164, 94, 0.14), rgba(205, 164, 94, 0.03));
+      border-color: rgba(205, 164, 94, 0.55);
+    }
+
+    .box.secret .box-title {
+      color: var(--gold-bright);
+    }
+
+    .box.avoid {
+      background: linear-gradient(135deg, rgba(120, 40, 60, 0.22), rgba(120, 40, 60, 0.05));
+      border-color: rgba(200, 90, 110, 0.4);
+    }
+
+    .box.avoid .box-title {
+      color: #e07f8f;
+    }
+
+    /* ============ CUSTOM LISTS ============ */
+    .styled-list {
+      list-style: none;
+    }
+
+    .styled-list li {
+      position: relative;
+      padding: 8px 0 8px 26px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(243, 233, 227, 0.08);
+    }
+
+    .styled-list li:last-child {
+      border-bottom: none;
+    }
+
+    .styled-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      color: var(--gold);
+      font-size: 11px;
+    }
+
+    .styled-list li b {
+      color: var(--cream);
+    }
+
+    .styled-list li span.d {
+      display: block;
+      color: var(--cream-dim);
+      font-size: 11.5px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(243, 233, 227, 0.08);
+      font-size: 12.5px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist .box-check {
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      margin-top: 2px;
+      border: 1.5px solid var(--gold);
+      border-radius: 3px;
+      background: rgba(205, 164, 94, 0.06);
+    }
+
+    .checklist .label b {
+      display: block;
+      color: var(--cream);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .checklist .label span {
+      color: var(--cream-dim);
+      font-size: 11px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+
+    /* ============ TWO COLUMN ============ */
+    .two-col {
+      display: flex;
+      gap: 12mm;
+      flex: 1;
+    }
+
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--rose-soft);
+      margin-bottom: 9px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* ============ BUBBLES (Copy/Paste) ============ */
+    .bubble {
+      background: rgba(20, 3, 21, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 12px 12px 12px 2px;
+      padding: 10px 13px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--cream);
+      margin-bottom: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      position: relative;
+    }
+
+    .bubble::before {
+      content: "❝";
+      position: absolute;
+      top: -8px;
+      left: 10px;
+      font-size: 15px;
+      color: var(--gold);
+      font-style: normal;
+      background: var(--bg-plum);
+      padding: 0 4px;
+    }
+
+    /* ============ DIALOGUE SCRIPT ============ */
+    .script {
+      border-left: 2px solid var(--gold);
+      padding-left: 16px;
+      margin: 12px 0;
+    }
+
+    .script .line {
+      margin-bottom: 12px;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .script .who {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 9.5px;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+
+    .script .who.b {
+      color: var(--rose-soft);
+    }
+
+    .script .say {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--cream);
+      display: block;
+    }
+
+    /* ============ TABLE ============ */
+    table.plan {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      margin: 10px 0;
+    }
+
+    table.plan th {
+      text-align: left;
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 9.5px;
+      color: var(--gold);
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    table.plan td {
+      padding: 9px 10px;
+      border-bottom: 1px solid rgba(243, 233, 227, 0.1);
+      color: var(--cream-dim);
+      vertical-align: top;
+    }
+
+    table.plan td.h {
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    table.plan tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ============ TOC ============ */
+    .toc-list {
+      list-style: none;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 7px 0;
+      font-size: 12.5px;
+    }
+
+    .toc-item .tn {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      width: 22px;
+      flex-shrink: 0;
+    }
+
+    .toc-item .tt {
+      color: var(--cream);
+    }
+
+    .toc-item .dots {
+      flex: 1;
+      border-bottom: 1px dotted rgba(205, 164, 94, 0.35);
+      position: relative;
+      top: -3px;
+    }
+
+    .toc-item .tp {
+      color: var(--cream-dim);
+      font-size: 11px;
+    }
+
+    .toc-chapter {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 10px;
+      color: var(--rose-soft);
+      margin: 14px 0 4px 0;
+    }
+
+    .toc-chapter:first-child {
+      margin-top: 0;
+    }
+
+    /* ============ PRINT ============ */
+    @media print {
+      body {
+        background: #000;
+      }
+
+      .page {
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+        page-break-inside: avoid;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media screen {
+      .page {
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        margin-bottom: 24px;
+        page-break-after: always;
+      }
+
+      body {
+        padding: 30px 0;
+        background: #000;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 1 — CAPA -->
+  <!-- ================================================================ -->
+  <div class="page cover">
+    <div class="frame"></div>
+    <div class="content" style="align-items:center; justify-content:center;">
+      <div class="ornament">✦ ✦ ✦</div>
+      <div class="eyebrow">Guia Visual Definitivo · Edição Completa</div>
+      <h1>ALÉM DAS<br><span class="accent-word">Quatro Paredes</span></h1>
+      <hr class="divider">
+      <p class="subtitle">O guia visual definitivo para reconstruir o desejo, quebrar o automático e reacender a
+        intimidade — do jeito de vocês, no ritmo de vocês.</p>
+      <div class="tagline-box">Método Reacender · Volume Completo · 40 Páginas</div>
+    </div>
+    <div class="page-footer"><span>01</span>
+      <div class="rule"></div><span>Além das Quatro Paredes</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 2 — DEDICATÓRIA E MANIFESTO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Abertura</div>
+        <h2>Dedicatória & Manifesto</h2>
+        <p class="sub">O direito ao prazer mútuo</p>
+      </div>
+      <div class="body-text" style="max-width:520px;">
+        <p>Este guia é para o casal que já amou tanto que esqueceu de <i>desejar</i>. Para quem trocou o olhar de cobiça
+          pelo olhar de logística — quem paga o quê, quem busca a criança, quem lava a louça. O amor sobreviveu. O
+          desejo, muitas vezes, ficou pelo caminho.</p>
+        <p>Não existe nada de errado nisso. É o que acontece quando duas pessoas constroem uma vida junta: a rotina, que
+          também é abrigo e segurança, engole devagar o espaço que antes era só dos dois.</p>
+        <p>Este material parte de uma crença simples e não negociável: <b>o prazer mútuo é um direito do casal, não um
+            bônus</b>. Não é luxo, não é frescura, não é "coisa de quem tem tempo sobrando". É parte da saúde da
+          relação, tanto quanto a comunicação, a confiança e o respeito.</p>
+        <p>Cada página aqui foi escrita para ser <i>usada</i>, não apenas lida. Não existe fórmula mágica nem prazo
+          garantido — existe prática, intenção e coragem de tentar algo diferente do piloto automático.</p>
+        <p>Que este guia sirva de ponte entre quem vocês são hoje, cansados e ocupados, e quem vocês ainda são capazes
+          de ser um para o outro: curiosos, presentes, desejantes.</p>
+      </div>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Leiam este guia juntos, mesmo que em momentos separados. A cumplicidade começa na decisão compartilhada de
+        tentar.
+      </div>
+    </div>
+    <div class="page-footer"><span>02</span>
+      <div class="rule"></div><span>Dedicatória & Manifesto</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 3 — SUMÁRIO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Índice</div>
+        <h2>Sumário Completo</h2>
+        <p class="sub">As 40 páginas do Método Reacender</p>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <div class="toc-chapter">Capítulo 1 — Entendendo a Rotina</div>
+          <ul class="toc-list">
+            <li class="toc-item"><span class="tn">04</span><span class="tt">O Raio-X da Rotina</span><span
+                class="dots"></span><span class="tp">Cap. 1</span></li>
+            <li class="toc-item"><span class="tn">05</span><span class="tt">Autoestima e Conexão Mental</span><span
+                class="dots"></span><span class="tp">Cap. 1</span></li>
+            <li class="toc-item"><span class="tn">06</span><span class="tt">Anatomia do Desejo Feminino</span><span
+                class="dots"></span><span class="tp">Cap. 1</span></li>
+            <li class="toc-item"><span class="tn">07</span><span class="tt">Anatomia do Desejo Masculino</span><span
+                class="dots"></span><span class="tp">Cap. 1</span></li>
+          </ul>
+
+          <div class="toc-chapter">Capítulo 2 — Comunicação</div>
+          <ul class="toc-list">
+            <li class="toc-item"><span class="tn">08</span><span class="tt">Comunicação Sem Tabus</span><span
+                class="dots"></span><span class="tp">Cap. 2</span></li>
+            <li class="toc-item"><span class="tn">09</span><span class="tt">Script: Pedindo Algo Novo</span><span
+                class="dots"></span><span class="tp">Cap. 2</span></li>
+            <li class="toc-item"><span class="tn">10</span><span class="tt">Superando a Insegurança</span><span
+                class="dots"></span><span class="tp">Cap. 2</span></li>
+          </ul>
+
+          <div class="toc-chapter">Capítulo 3 — Ação no Dia a Dia</div>
+          <ul class="toc-list">
+            <li class="toc-item"><span class="tn">11</span><span class="tt">O Botão de Emergência</span><span
+                class="dots"></span><span class="tp">Cap. 3</span></li>
+            <li class="toc-item"><span class="tn">12</span><span class="tt">WhatsApp — Nível Leve</span><span
+                class="dots"></span><span class="tp">Cap. 3</span></li>
+            <li class="toc-item"><span class="tn">13</span><span class="tt">WhatsApp — Nível Médio</span><span
+                class="dots"></span><span class="tp">Cap. 3</span></li>
+            <li class="toc-item"><span class="tn">14</span><span class="tt">WhatsApp — Nível Ousado</span><span
+                class="dots"></span><span class="tp">Cap. 3</span></li>
+            <li class="toc-item"><span class="tn">15</span><span class="tt">O Jogo do Flerte Noturno</span><span
+                class="dots"></span><span class="tp">Cap. 3</span></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <div class="toc-chapter">Capítulo 4 — O Cenário</div>
+          <ul class="toc-list">
+            <li class="toc-item"><span class="tn">16</span><span class="tt">Rompendo o Cenário</span><span
+                class="dots"></span><span class="tp">Cap. 4</span></li>
+            <li class="toc-item"><span class="tn">17</span><span class="tt">Iluminação e Aromaterapia</span><span
+                class="dots"></span><span class="tp">Cap. 4</span></li>
+            <li class="toc-item"><span class="tn">18</span><span class="tt">Sons e Playlists</span><span
+                class="dots"></span><span class="tp">Cap. 4</span></li>
+            <li class="toc-item"><span class="tn">19</span><span class="tt">Preliminares de Alto Impacto</span><span
+                class="dots"></span><span class="tp">Cap. 4</span></li>
+            <li class="toc-item"><span class="tn">20</span><span class="tt">Guia de Massagem Sensual</span><span
+                class="dots"></span><span class="tp">Cap. 4</span></li>
+          </ul>
+
+          <div class="toc-chapter">Capítulos 5 a 8 — Volume 2</div>
+          <ul class="toc-list">
+            <li class="toc-item"><span class="tn">21</span><span class="tt">Técnicas & Posições Avançadas</span><span
+                class="dots"></span><span class="tp">pág. 21–28</span></li>
+            <li class="toc-item"><span class="tn">29</span><span class="tt">Fantasias & Roleplay</span><span
+                class="dots"></span><span class="tp">pág. 29–33</span></li>
+            <li class="toc-item"><span class="tn">34</span><span class="tt">Desafios & Cronogramas</span><span
+                class="dots"></span><span class="tp">pág. 34–37</span></li>
+            <li class="toc-item"><span class="tn">38</span><span class="tt">Manutenção da Chama</span><span
+                class="dots"></span><span class="tp">pág. 38–40</span></li>
+          </ul>
+
+          <div class="box alert" style="margin-top:16px;">
+            <span class="box-title">🔥 Alerta de Prazer</span>
+            As páginas 21 a 40 (Capítulos 5 a 8) compõem a Parte 2 deste material, entregue na sequência.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>03</span>
+      <div class="rule"></div><span>Sumário Completo</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 4 — CAP 1: RAIO-X DA ROTINA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 01</div>
+        <h2>O Raio-X da Rotina</h2>
+        <p class="sub">Por que os casais esfriam?</p>
+      </div>
+      <div class="body-text">
+        <p>Nenhum casal decide, num domingo qualquer, parar de desejar um ao outro. O esfriamento não chega como um
+          evento — chega como um acúmulo de pequenas ausências que, sozinhas, parecem inofensivas.</p>
+        <p>A ciência do comportamento chama isso de <b>habituação</b>: o cérebro humano é programado para dar menos
+          atenção ao que já é familiar e mais atenção ao que é novo. É um mecanismo de sobrevivência — poupar energia
+          com o que já está "resolvido" — mas que, aplicado à vida a dois, trai a intimidade. O parceiro que antes era
+          mistério vira previsível. E o previsível, por mais amado que seja, deixa de ativar as mesmas áreas cerebrais
+          ligadas ao desejo e à excitação.</p>
+        <p>Some a isso três outros fatores centrais:</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Sobrecarga mental.</b><span class="d">Contas, filhos, trabalho, WhatsApp da família — a energia
+            disponível para o desejo é a que sobra depois de tudo isso, e quase sempre não sobra nada.</span></li>
+        <li><b>Papéis fixos.</b><span class="d">Quando o casal se acostuma a ser só "pai e mãe" ou só "provedor e
+            cuidadora", o espaço para serem amante um do outro desaparece do dia a dia.</span></li>
+        <li><b>Ausência de ritual.</b><span class="d">Sem um momento reservado, a intimidade compete com sono, cansaço e
+            Netflix — e quase sempre perde.</span></li>
+      </ul>
+      <div class="box alert">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Esfriar não é sinal de que o amor acabou. É sinal de que a rotina venceu o espaço do casal — e isso se reverte
+        com decisão, não com sorte.
+      </div>
+    </div>
+    <div class="page-footer"><span>04</span>
+      <div class="rule"></div><span>Cap. 01 — O Raio-X da Rotina</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 5 — AUTOESTIMA E CONEXÃO MENTAL -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 01</div>
+        <h2>Autoestima e Conexão Mental</h2>
+        <p class="sub">Destravando a mente antes do corpo</p>
+      </div>
+      <div class="body-text">
+        <p>O desejo raramente começa no corpo. Ele começa na cabeça — e é ali que a maior parte dos bloqueios se
+          instala. Antes de qualquer técnica, qualquer posição ou qualquer roteiro de mensagem, existe um trabalho
+          invisível: o de se sentir <i>merecedor</i> e <i>disponível</i> para o prazer.</p>
+        <p>Autoestima baixa, autocobrança e a sensação de estar "sempre atrasado" com tudo — trabalho, casa, corpo —
+          competem diretamente com o espaço mental necessário para desejar. É quase impossível se entregar a um momento
+          de prazer enquanto a mente ainda está fazendo lista de tarefas.</p>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Ritual de transição</b><span>Antes de qualquer momento a dois, reserve 5 minutos para
+              "desligar" do dia — banho, respiração, trocar de roupa.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Autoimagem em voz alta</b><span>Elogie o próprio corpo diante do espelho, mesmo que soe
+              estranho no começo. A voz interna muda com repetição.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Presença sem celular</b><span>Nos primeiros 20 minutos após reencontrar o parceiro,
+              deixe o celular fora de alcance.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Diário de conexão</b><span>Anote, uma vez por semana, um momento em que se sentiu
+              desejado(a) — isso treina o cérebro a perceber esses sinais.</span></div>
+        </li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        A conexão mental precede a física quase sempre. Casais que conversam 10 minutos sem distração antes de dormir
+        relatam mais desejo espontâneo ao longo da semana.
+      </div>
+    </div>
+    <div class="page-footer"><span>05</span>
+      <div class="rule"></div><span>Cap. 01 — Autoestima e Conexão Mental</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 6 — DESEJO FEMININO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 01</div>
+        <h2>Anatomia do Desejo Feminino</h2>
+        <p class="sub">Fatores psicológicos e hormonais</p>
+      </div>
+      <div class="body-text">
+        <p>Diferente do que o senso comum sugere, o desejo feminino raramente é espontâneo — na maioria das vezes, ele é
+          <b>responsivo</b>. Isso significa que surge como resposta a um estímulo (um toque, uma palavra, um clima
+          criado), e não do nada, como um interruptor que liga sozinho.</p>
+        <p>Esse é um dos motivos pelos quais tantas mulheres relatam "não sentir vontade" mesmo amando o parceiro: a
+          vontade não chegou porque o contexto que a provocaria também não chegou. Não é falta de desejo — é falta de
+          ativação.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Ciclo hormonal.</b><span class="d">Estrogênio e testosterona variam ao longo do ciclo e influenciam
+            diretamente picos naturais de libido — vale observar e reconhecer os próprios padrões.</span></li>
+        <li><b>Segurança emocional.</b><span class="d">Sentir-se segura na relação — ouvida, respeitada, livre de
+            julgamento — é, para a maioria das mulheres, pré-requisito para relaxar o suficiente e desejar.</span></li>
+        <li><b>Carga mental.</b><span class="d">A sobrecarga de tarefas domésticas e emocionais é um dos maiores
+            inibidores de desejo relatados em estudos sobre satisfação sexual feminina.</span></li>
+        <li><b>Imagem corporal.</b><span class="d">A forma como a mulher se enxerga no espelho impacta diretamente sua
+            disponibilidade para o toque e a exposição física.</span></li>
+      </ul>
+      <div class="box alert">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Se o desejo é responsivo, o parceiro tem um papel ativo: criar o contexto (tempo, atenção, ausência de pressa) é
+        tão importante quanto o próprio toque.
+      </div>
+    </div>
+    <div class="page-footer"><span>06</span>
+      <div class="rule"></div><span>Cap. 01 — Anatomia do Desejo Feminino</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 7 — DESEJO MASCULINO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 01</div>
+        <h2>Anatomia do Desejo Masculino</h2>
+        <p class="sub">Mitos vs. Realidade</p>
+      </div>
+      <div class="body-text">
+        <p>A crença popular de que "homem sempre quer" simplifica demais uma realidade bem mais complexa. O desejo
+          masculino também é afetado por estresse, autoestima, cansaço e conexão emocional — só que raramente há espaço
+          social para o homem admitir isso.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">❌ Mito</div>
+          <ul class="styled-list">
+            <li><b>"Homem nunca recusa."</b><span class="d">Estresse, ansiedade e cansaço reduzem a libido masculina
+                tanto quanto a feminina.</span></li>
+            <li><b>"Desejo masculino é só físico."</b><span class="d">Conexão emocional e sentir-se desejado também
+                ativam (ou desativam) a libido do homem.</span></li>
+            <li><b>"Ele deveria sempre iniciar."</b><span class="d">A expectativa de sempre ser quem inicia gera pressão
+                silenciosa e cansaço emocional.</span></li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-title">✅ Realidade</div>
+          <ul class="styled-list">
+            <li><b>Testosterona flutua.</b><span class="d">Sono ruim, estresse crônico e sedentarismo reduzem os níveis
+                hormonais que sustentam a libido.</span></li>
+            <li><b>Validação importa.</b><span class="d">Sentir-se desejado (e não só "funcional") é combustível
+                emocional relevante para o homem.</span></li>
+            <li><b>Iniciativa compartilhada.</b><span class="d">Quando a parceira também inicia, a pressão diminui e o
+                desejo tende a fluir com mais naturalidade.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Perguntar "o que você sentiu hoje?" em vez de "você quer?" abre espaço emocional que reduz a pressão de
+        performance masculina.
+      </div>
+    </div>
+    <div class="page-footer"><span>07</span>
+      <div class="rule"></div><span>Cap. 01 — Anatomia do Desejo Masculino</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 8 — COMUNICAÇÃO SEM TABUS -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 02</div>
+        <h2>Comunicação Sem Tabus</h2>
+        <p class="sub">Como falar de fantasias sem medo</p>
+      </div>
+      <div class="body-text">
+        <p>A maior barreira para a maioria dos casais não é a falta de desejo — é o medo de comunicar o desejo. Medo de
+          julgamento, medo de parecer "estranho demais", medo de magoar o parceiro ao admitir que algo na rotina não
+          satisfaz mais.</p>
+        <p>Falar sobre fantasias e desejos exige um ambiente de segurança absoluta: nada do que for dito ali pode ser
+          usado como arma em uma briga futura. Esse acordo — implícito ou explícito — é o que permite abertura real.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Escolha o momento certo.</b><span class="d">Nunca durante ou logo após um desentendimento. Prefira
+            momentos leves, sem pressa, fora do quarto.</span></li>
+        <li><b>Fale em primeira pessoa.</b><span class="d">"Eu tenho vontade de..." abre diálogo. "Você nunca..." fecha
+            qualquer possibilidade de conversa.</span></li>
+        <li><b>Trate julgamento como proibido.</b><span class="d">Reações de choque ou riso debochado ensinam o parceiro
+            a nunca mais se abrir.</span></li>
+        <li><b>Separe fantasia de expectativa.</b><span class="d">Nem todo desejo verbalizado precisa virar ação
+            imediata — às vezes, ser ouvido já é suficiente.</span></li>
+      </ul>
+      <div class="box avoid">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Comparar o parceiro com ex-relacionamentos ou fontes externas ao verbalizar um desejo. Isso transforma abertura
+        em ameaça.
+      </div>
+    </div>
+    <div class="page-footer"><span>08</span>
+      <div class="rule"></div><span>Cap. 02 — Comunicação Sem Tabus</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 9 — SCRIPT: PEDINDO ALGO NOVO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 02</div>
+        <h2>Script Prático</h2>
+        <p class="sub">Como pedir algo novo na cama — exemplos de diálogo</p>
+      </div>
+      <div class="body-text">
+        <p>Um roteiro pronto ajuda a destravar a primeira frase — a mais difícil de todas. Adaptem as falas ao tom que
+          já existe entre vocês.</p>
+      </div>
+
+      <div class="script">
+        <div class="line"><span class="who">Cenário 1 · Abertura suave</span><span class="say">"Estava pensando em uma
+            coisa que queria experimentar com você. Posso te contar sem você achar estranho?"</span></div>
+        <div class="line"><span class="who b">Resposta ideal</span><span class="say">"Claro, pode falar. Aqui é lugar
+            seguro pra isso."</span></div>
+      </div>
+
+      <div class="script">
+        <div class="line"><span class="who">Cenário 2 · Pedido direto</span><span class="say">"Queria muito que a gente
+            tentasse [algo específico] uma dessas noites. Topa?"</span></div>
+        <div class="line"><span class="who b">Resposta ideal</span><span class="say">"Gostei da ideia. Vamos combinar um
+            dia pra isso, sem pressa."</span></div>
+      </div>
+
+      <div class="script">
+        <div class="line"><span class="who">Cenário 3 · Quando o outro hesita</span><span class="say">"Sem problema se
+            não for a sua praia agora. Só queria que você soubesse o que eu sinto vontade."</span></div>
+        <div class="line"><span class="who b">Resposta ideal</span><span class="say">"Obrigado(a) por confiar em mim pra
+            falar isso. Deixa eu pensar com carinho."</span></div>
+      </div>
+
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Terminem sempre reforçando o vínculo: "isso não muda o que sinto por você" desarma qualquer insegurança que o
+        pedido possa gerar.
+      </div>
+    </div>
+    <div class="page-footer"><span>09</span>
+      <div class="rule"></div><span>Cap. 02 — Script: Pedindo Algo Novo</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 10 — SUPERANDO INSEGURANÇA COM O CORPO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 02</div>
+        <h2>Superando a Insegurança com o Próprio Corpo</h2>
+        <p class="sub">Exercícios práticos</p>
+      </div>
+      <div class="body-text">
+        <p>A insegurança corporal é uma das maiores ladras silenciosas de intimidade. Ela desliga a luz, evita certas
+          posições, apressa o momento — tudo para escapar da exposição. O caminho de volta não é "aceitar o corpo do dia
+          para a noite", mas construir tolerância à exposição, aos poucos.</p>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Exercício do espelho guiado</b><span>Fiquem juntos diante do espelho, vestidos, por 1
+              minuto, apenas se olhando — sem comentários sobre o corpo, só presença.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Toque não sexual primeiro</b><span>Pratiquem toques de carinho sem finalidade sexual —
+              isso reduz a associação entre "ser visto" e "ser avaliado".</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Luz progressiva</b><span>Se o desconforto é com o escuro/claro, avancem aos poucos:
+              vela, depois abajur, no ritmo de quem sente insegurança.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Elogio específico do parceiro</b><span>Trocar elogios sobre partes específicas do corpo
+              (e não genéricos) reconstrói a autoimagem com mais eficácia.</span></div>
+        </li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Insegurança corporal não se resolve com pressa. Celebrem cada pequeno avanço como uma vitória do casal, não uma
+        obrigação individual.
+      </div>
+    </div>
+    <div class="page-footer"><span>10</span>
+      <div class="rule"></div><span>Cap. 02 — Superando a Insegurança</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 11 — BOTÃO DE EMERGÊNCIA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 03</div>
+        <h2>O Botão de Emergência</h2>
+        <p class="sub">Checklist de atitudes de 2 minutos no dia a dia</p>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Toque sem motivo</b><span>Passe a mão nas costas ao cruzar pela casa. Sem anunciar, sem
+              explicar.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Olhar que demora</b><span>Segure o olhar 3 segundos além do normal antes de sair de
+              casa.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Mensagem sem contexto</b><span>Envie algo picante no meio da tarde, sem
+              introdução.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Beijo com pausa</b><span>Na despedida, beije um segundo a mais do que o costume
+              pede.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Elogio ao corpo</b><span>Não elogie a roupa. Elogie o corpo por baixo dela.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Sussurro na saída</b><span>Uma frase baixa no ouvido antes de qualquer um sair pela
+              porta.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Bilhete escondido</b><span>Um papel curto na bolsa, no bolso do casaco ou no
+              carro.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Dança de cozinha</b><span>Puxe o parceiro para dançar 30 segundos enquanto o jantar
+              cozinha.</span></div>
+        </li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Escolham 1 item por dia — nunca todos de uma vez. O desejo se constrói por repetição pequena, não por overdose.
+      </div>
+    </div>
+    <div class="page-footer"><span>11</span>
+      <div class="rule"></div><span>Cap. 03 — O Botão de Emergência</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 12 — WHATSAPP NÍVEL LEVE -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 03</div>
+        <h2>Copie e Cole — WhatsApp</h2>
+        <p class="sub">Mensagens de Antecipação · Nível Leve</p>
+      </div>
+      <div class="body-text">
+        <p>Ideais para começar o dia plantando um sorriso e uma expectativa gostosa, sem exagero.</p>
+      </div>
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">Para ela</div>
+          <div class="bubble">Bom dia pra você que ocupou meus pensamentos antes mesmo do café.</div>
+          <div class="bubble">Hoje eu quero te ver sorrir do jeito que só eu sei fazer você sorrir.</div>
+          <div class="bubble">Separa um tempinho pra mim hoje à noite. Nada demais, só nós dois.</div>
+        </div>
+        <div class="col">
+          <div class="col-title">Para ele</div>
+          <div class="bubble">Acordei pensando em como foi bom te ter por perto ontem.</div>
+          <div class="bubble">Hoje eu quero um abraço mais demorado quando você chegar.</div>
+          <div class="bubble">Vou preparar uma surpresinha boba pra gente mais tarde. Se aguarda.</div>
+        </div>
+      </div>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        O nível leve funciona melhor em dias de semana comuns — ele constrói o hábito de pensar um no outro sem depender
+        de ocasião especial.
+      </div>
+    </div>
+    <div class="page-footer"><span>12</span>
+      <div class="rule"></div><span>Cap. 03 — WhatsApp Nível Leve</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 13 — WHATSAPP NÍVEL MÉDIO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 03</div>
+        <h2>Copie e Cole — WhatsApp</h2>
+        <p class="sub">Mensagens de Provocação · Nível Médio</p>
+      </div>
+      <div class="body-text">
+        <p>Um passo além do leve: já plantam tensão e curiosidade sobre a noite que vem.</p>
+      </div>
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">Para ela</div>
+          <div class="bubble">Passei o dia com uma cena sua na cabeça. Não vou contar qual — você vai descobrir hoje.
+          </div>
+          <div class="bubble">Lembrei de como você fica quando eu chego perto e não digo nada. Chega logo.</div>
+          <div class="bubble">Hoje eu quero ser eu a te surpreender. Só se arrume — o resto é comigo.</div>
+        </div>
+        <div class="col">
+          <div class="col-title">Para ele</div>
+          <div class="bubble">Não vou dizer o que estou vestindo agora. Vou deixar você imaginar até chegar.</div>
+          <div class="bubble">Fiquei pensando no seu jeito de me olhar ontem. Quero ver esse olhar de novo hoje.</div>
+          <div class="bubble">Hoje a noite é nossa. Guarda energia — vou cobrar isso mais tarde.</div>
+        </div>
+      </div>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Mande a mensagem e não sustente o assunto por texto. Deixe a tensão aberta até o encontro presencial.
+      </div>
+    </div>
+    <div class="page-footer"><span>13</span>
+      <div class="rule"></div><span>Cap. 03 — WhatsApp Nível Médio</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 14 — WHATSAPP NÍVEL OUSADO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 03</div>
+        <h2>Copie e Cole — WhatsApp</h2>
+        <p class="sub">Mensagens Explícitas · Nível Ousado</p>
+      </div>
+      <div class="body-text">
+        <p>Reservadas para casais já confortáveis com esse tipo de troca. Usem com quem já topou essa linguagem antes.
+        </p>
+      </div>
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">Para ela</div>
+          <div class="bubble">Já sei exatamente onde vou te beijar primeiro quando você chegar. E não vai ser na boca.
+          </div>
+          <div class="bubble">Tranca a porta assim que entrar. Hoje eu não vou ter paciência de esperar.</div>
+          <div class="bubble">Estou contando os minutos pra te tirar essa roupa com calma.</div>
+        </div>
+        <div class="col">
+          <div class="col-title">Para ele</div>
+          <div class="bubble">Vou estar te esperando sem pressa nenhuma pra você tirar a minha roupa.</div>
+          <div class="bubble">Hoje eu quero sentir cada segundo — não vamos ter pressa nenhuma.</div>
+          <div class="bubble">Já decidi o que vou fazer com você assim que a porta fechar.</div>
+        </div>
+      </div>
+      <div class="box avoid" style="margin-top:auto;">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Usar o nível ousado sem antes checar se o parceiro está confortável com esse tom. Consentimento também vale para
+        o tipo de mensagem trocada.
+      </div>
+    </div>
+    <div class="page-footer"><span>14</span>
+      <div class="rule"></div><span>Cap. 03 — WhatsApp Nível Ousado</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 15 — JOGO DO FLERTE NOTURNO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 03</div>
+        <h2>O Jogo do Flerte Noturno</h2>
+        <p class="sub">Como criar tensão sexual ao longo do dia</p>
+      </div>
+      <div class="body-text">
+        <p>Tensão sexual não nasce no quarto — ela é construída horas antes, em pequenos gestos que vão acumulando
+          expectativa. O "Jogo do Flerte Noturno" transforma um dia comum em uma contagem regressiva silenciosa que só o
+          casal conhece.</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Horário</th>
+          <th>Ação</th>
+        </tr>
+        <tr>
+          <td class="h">Manhã</td>
+          <td>Envie uma mensagem de antecipação (nível leve) sem revelar o plano da noite.</td>
+        </tr>
+        <tr>
+          <td class="h">Meio-dia</td>
+          <td>Uma segunda mensagem, um pouco mais ousada, mencionando "algo especial" sem detalhar.</td>
+        </tr>
+        <tr>
+          <td class="h">Tarde</td>
+          <td>Um toque físico rápido ao se encontrarem (se possível) ou uma ligação de 1 minuto só para ouvir a voz.
+          </td>
+        </tr>
+        <tr>
+          <td class="h">Fim de tarde</td>
+          <td>Mensagem nível médio confirmando que "a noite está reservada" — sem revelar o roteiro.</td>
+        </tr>
+        <tr>
+          <td class="h">Noite</td>
+          <td>Executem o plano combinado (ver Capítulo 4), com celular fora de alcance.</td>
+        </tr>
+      </table>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Nunca revelem o plano completo antes da hora. O mistério é parte ativa da excitação — não um detalhe secundário.
+      </div>
+    </div>
+    <div class="page-footer"><span>15</span>
+      <div class="rule"></div><span>Cap. 03 — O Jogo do Flerte Noturno</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 16 — ROMPENDO O CENÁRIO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Rompendo o Cenário</h2>
+        <p class="sub">Preparação do ambiente do quarto</p>
+      </div>
+      <div class="body-text">
+        <p>O quarto de casal, na maioria das casas, acumula funções que nada têm a ver com intimidade: é escritório às
+          22h, sala de TV, depósito de roupa passada. O cérebro associa o ambiente à função mais recorrente nele — e é
+          difícil desejar em um espaço que também é lembrete de trabalho pendente.</p>
+        <p>"Romper o cenário" significa, ainda que por poucas horas, transformar o quarto de volta em um espaço só do
+          casal.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Remova telas.</b><span class="d">TV desligada, notebook fora do quarto, celulares no modo avião guardados
+            em outro cômodo.</span></li>
+        <li><b>Troque a roupa de cama.</b><span class="d">Um lençol limpo e diferente do habitual já sinaliza ao cérebro
+            que "esta noite é diferente".</span></li>
+        <li><b>Organize antes, não depois.</b><span class="d">Roupa fora do lugar e bagunça visual competem com a
+            atenção que deveria estar no parceiro.</span></li>
+        <li><b>Defina um horário de corte.</b><span class="d">Combinem previamente que, a partir de determinado horário,
+            assuntos de logística da casa ficam de fora.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        O ambiente fala antes de qualquer palavra. Cinco minutos de preparação mudam completamente o tom da noite.
+      </div>
+    </div>
+    <div class="page-footer"><span>16</span>
+      <div class="rule"></div><span>Cap. 04 — Rompendo o Cenário</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 17 — ILUMINAÇÃO E AROMATERAPIA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Iluminação e Aromaterapia</h2>
+        <p class="sub">Como usar os sentidos a seu favor</p>
+      </div>
+      <div class="body-text">
+        <p>Luz e cheiro são os dois sentidos que mais rapidamente alteram o estado emocional de um ambiente — e os mais
+          fáceis de ajustar sem custo ou esforço grande.</p>
+      </div>
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">Iluminação</div>
+          <ul class="styled-list">
+            <li><b>Luz âmbar, nunca branca fria.</b><span class="d">Tons quentes relaxam o sistema nervoso; luz branca
+                ativa o estado de alerta, o oposto do que se busca.</span></li>
+            <li><b>Velas em número ímpar.</b><span class="d">Visualmente, arranjos ímpares (3 ou 5) parecem mais
+                naturais e menos "montados".</span></li>
+            <li><b>Nunca 100% escuro.</b><span class="d">Um mínimo de luz permite contato visual, que aumenta
+                significativamente a conexão emocional no momento.</span></li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-title">Aromaterapia</div>
+          <ul class="styled-list">
+            <li><b>Baunilha e sândalo.</b><span class="d">Aromas associados a aconchego e sensualidade, sem serem
+                enjoativos em ambiente fechado.</span></li>
+            <li><b>Ylang-ylang.</b><span class="d">Tradicionalmente ligado à relaxamento e à libido em práticas de
+                aromaterapia.</span></li>
+            <li><b>Evite cítricos fortes à noite.</b><span class="d">Tendem a ser energizantes — melhores para a manhã
+                do que para criar clima de entrega.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Associe sempre o mesmo aroma aos momentos íntimos do casal. Com o tempo, o próprio cheiro passa a disparar
+        antecipação por condicionamento.
+      </div>
+    </div>
+    <div class="page-footer"><span>17</span>
+      <div class="rule"></div><span>Cap. 04 — Iluminação e Aromaterapia</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 18 — SONS E PLAYLISTS -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Sons e Playlists</h2>
+        <p class="sub">A ciência das frequências musicais na intimidade</p>
+      </div>
+      <div class="body-text">
+        <p>A música influencia diretamente o ritmo cardíaco e a respiração — dois elementos centrais da resposta de
+          excitação do corpo. Faixas com batidas entre 60 e 80 BPM (próximas ao ritmo de repouso do coração) ajudam o
+          corpo a desacelerar e relaxar, criando a base ideal para o desejo se instalar sem pressa.</p>
+        <p>Já ritmos muito acelerados ou letras muito familiares (que puxam a mente para cantar junto) competem com a
+          atenção que deveria estar no momento a dois.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Prefira instrumental ou vozes suaves.</b><span class="d">Letras muito conhecidas tendem a puxar a atenção
+            para a letra, não para o parceiro.</span></li>
+        <li><b>Volume baixo, quase de fundo.</b><span class="d">A música deve embalar a conversa e o silêncio, nunca
+            competir com eles.</span></li>
+        <li><b>Playlist fixa do casal.</b><span class="d">Repetir as mesmas faixas em momentos íntimos cria associação —
+            a música vira "gatilho" de clima com o tempo.</span></li>
+        <li><b>Evite playlists públicas genéricas.</b><span class="d">Uma curadoria pessoal, mesmo simples, comunica
+            mais cuidado do que uma lista pronta de streaming.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Criem juntos uma playlist "oficial" do casal — 8 a 10 músicas — e reservem-na exclusivamente para os momentos
+        íntimos.
+      </div>
+    </div>
+    <div class="page-footer"><span>18</span>
+      <div class="rule"></div><span>Cap. 04 — Sons e Playlists</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 19 — PRELIMINARES DE ALTO IMPACTO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Preliminares de Alto Impacto</h2>
+        <p class="sub">O toque que desperta</p>
+      </div>
+      <div class="body-text">
+        <p>Preliminares não são um "trâmite" antes do ato principal — são, para a maioria dos casais, o coração da
+          experiência. É nelas que o corpo desperta de verdade e a mente se solta da lista de tarefas do dia.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Comece longe do óbvio.</b><span class="d">Nuca, atrás das orelhas, interior dos braços e pescoço são
+            zonas altamente sensíveis e frequentemente ignoradas.</span></li>
+        <li><b>Varie a pressão.</b><span class="d">Alterne entre toques muito leves (quase roçando) e toques firmes — a
+            variação mantém o corpo alerta e presente.</span></li>
+        <li><b>Use a respiração como guia.</b><span class="d">Observe onde a respiração do parceiro muda de ritmo — é
+            ali que a atenção deve se concentrar mais tempo.</span></li>
+        <li><b>Beijos com propósito.</b><span class="d">Beijos longos e sem pressa no pescoço e na virada do ombro
+            costumam gerar resposta corporal intensa.</span></li>
+        <li><b>Não corra para o próximo passo.</b><span class="d">Permaneça em cada zona o tempo que o corpo do parceiro
+            pedir, não o tempo que a ansiedade sugerir.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Perguntem, no calor do momento: "mais forte ou mais devagar?". Comunicação durante o toque aumenta a precisão e
+        a confiança.
+      </div>
+    </div>
+    <div class="page-footer"><span>19</span>
+      <div class="rule"></div><span>Cap. 04 — Preliminares de Alto Impacto</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 20 — GUIA DE MASSAGEM SENSUAL -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Guia Prático de Massagem Sensual</h2>
+        <p class="sub">Passo a passo do início</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Passo</th>
+          <th>O que fazer</th>
+        </tr>
+        <tr>
+          <td class="h">1 · Cenário</td>
+          <td>Luz baixa ou vela acesa, toalha ou lençol limpo sobre a cama, celulares no silencioso e fora de alcance.
+          </td>
+        </tr>
+        <tr>
+          <td class="h">2 · Posição</td>
+          <td>Parceiro(a) deitado(a) de bruços, braços relaxados ao lado do corpo, respiração tranquila.</td>
+        </tr>
+        <tr>
+          <td class="h">3 · Aquecimento</td>
+          <td>Óleo nas mãos, aquecido pelo atrito. Deslize as mãos por toda a extensão das costas, sem pressão — só
+            apresentação do toque.</td>
+        </tr>
+        <tr>
+          <td class="h">4 · Ombros e nuca</td>
+          <td>Movimentos circulares com os polegares nos ombros e na nuca, região onde o estresse do dia costuma se
+            concentrar.</td>
+        </tr>
+        <tr>
+          <td class="h">5 · Descida lenta</td>
+          <td>Desça pela coluna com as palmas abertas, bem devagar, aumentando levemente a pressão ao chegar na lombar.
+          </td>
+        </tr>
+        <tr>
+          <td class="h">6 · A virada</td>
+          <td>Peça para o parceiro virar de frente. Sustente o olhar por alguns segundos antes de continuar — é o
+            momento em que a massagem deixa de ser só terapêutica.</td>
+        </tr>
+      </table>
+      <div class="box secret">
+        <span class="box-title">💡 Truque Secreto</span>
+        O silêncio vale mais que qualquer técnica de massoterapia. Falem pouco — deixem as mãos comunicarem o que as
+        palavras não precisam dizer.
+      </div>
+      <div class="box avoid" style="margin-top:auto;">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Checar o celular no meio da massagem. Isso quebra o clima instantaneamente — e o parceiro sempre percebe.
+      </div>
+    </div>
+    <div class="page-footer"><span>20</span>
+      <div class="rule"></div><span>Cap. 04 — Guia de Massagem Sensual</span>
+    </div>
+  </div>
+  <!-- ================================================================ -->
+  <!-- PÁGINA 21 — ZONAS ERÓGENAS PERIFÉRICAS -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 04</div>
+        <h2>Mapeamento de Zonas Periféricas</h2>
+        <p class="sub">A sensibilidade que vive fora do óbvio</p>
+      </div>
+      <div class="body-text">
+        <p>A pele humana é o maior órgão sensorial do corpo — e, ainda assim, a maioria dos casais explora
+          sistematicamente as mesmas quatro ou cinco regiões, sempre na mesma ordem, sempre com a mesma pressa. O
+          resultado é previsível: o corpo aprende o roteiro e para de reagir a ele com a mesma intensidade.</p>
+        <p>Existe um território inteiro de sensibilidade que raramente recebe atenção — não porque seja menos
+          importante, mas porque não está no "caminho direto". Redescobrir essas zonas é, literalmente, redescobrir o
+          parceiro com as mãos.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Face interna dos pulsos.</b><span class="d">Pele fina, muitas terminações nervosas próximas à superfície
+            — um toque leve aqui costuma surpreender pela intensidade da resposta.</span></li>
+        <li><b>Linha do cabelo e couro cabeludo.</b><span class="d">Um leve arranhar com as unhas, muito devagar, ativa
+            uma resposta de relaxamento profundo antes de qualquer outra coisa.</span></li>
+        <li><b>Parte de trás dos joelhos.</b><span class="d">Região quase nunca tocada intencionalmente, e por isso
+            mesmo altamente responsiva a um toque inesperado.</span></li>
+        <li><b>Curva da cintura até o quadril.</b><span class="d">Deslizar a mão inteira, sem pressa, por essa linha
+            comunica intenção sem precisar de palavras.</span></li>
+        <li><b>Sola dos pés (com pressão firme).</b><span class="d">Diferente da cócega, a pressão firme e constante
+            nessa região tende a relaxar em vez de irritar.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Peçam um ao outro para apontar, com uma palavra, uma zona que nunca foi explorada. A curiosidade mútua já é, em
+        si, um afrodisíaco.
+      </div>
+    </div>
+    <div class="page-footer"><span>21</span>
+      <div class="rule"></div><span>Cap. 04 — Zonas Erógenas Periféricas</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 22 — MANUAL DA SINERGIA CORPORAL -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>O Manual da Sinergia Corporal</h2>
+        <p class="sub">Presença, ritmo e respiração compartilhada</p>
+      </div>
+      <div class="body-text">
+        <p>Existe uma diferença enorme entre dois corpos que se movimentam <i>ao mesmo tempo</i> e dois corpos que se
+          movimentam <i>em sintonia</i>. A primeira é coincidência; a segunda é construção. E é essa construção —
+          silenciosa, sensível, quase coreográfica — que transforma um encontro físico em uma experiência de verdadeira
+          conexão.</p>
+        <p>A sinergia corporal não é um talento nato: é uma habilidade que se desenvolve com atenção mútua. O primeiro
+          passo é abandonar a ideia de que a intimidade é feita de "iniciativa e resposta" — um conduz, o outro segue —
+          e substituí-la pela ideia de <b>diálogo</b>, onde os dois corpos escutam e falam ao mesmo tempo.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Respiração como metrônomo.</b><span class="d">Antes de qualquer movimento, sincronizem a respiração por
+            alguns instantes. O ritmo do corpo tende a seguir o ritmo da respiração.</span></li>
+        <li><b>Contato constante, mesmo em pausa.</b><span class="d">Manter uma parte do corpo sempre em contato — uma
+            mão, a testa, o peito — evita que a pausa vire distância.</span></li>
+        <li><b>Microssinais em vez de instruções.</b><span class="d">Um aperto leve de mão, uma mudança na respiração,
+            um suspiro: aprendam a "ler" esses sinais em vez de depender só da fala.</span></li>
+        <li><b>Alternância de quem conduz.</b><span class="d">Revezar quem guia o ritmo evita que a intimidade vire um
+            padrão fixo de papéis.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Sinergia não significa perfeição sincronizada. Significa presença suficiente para perceber e se ajustar ao outro
+        em tempo real.
+      </div>
+    </div>
+    <div class="page-footer"><span>22</span>
+      <div class="rule"></div><span>Cap. 05 — Manual da Sinergia Corporal</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 23 — FORTALECIMENTO PÉLVICO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>Fortalecimento Pélvico e Consciência Corporal</h2>
+        <p class="sub">Os benefícios funcionais de um assoalho pélvico ativo</p>
+      </div>
+      <div class="body-text">
+        <p>O assoalho pélvico é um conjunto de músculos frequentemente ignorado até que algum sintoma o traga à atenção
+          — geralmente relacionado à saúde urinária ou pós-parto. Mas seu papel vai muito além disso: é uma região
+          central tanto para a saúde física quanto para a qualidade da resposta sexual, em ambos os parceiros.</p>
+        <p>Assim como qualquer outro grupo muscular, o assoalho pélvico responde a treino. Fortalecê-lo não é sobre
+          desempenho — é sobre consciência corporal, circulação sanguínea local e controle voluntário sobre uma região
+          que, na maioria das pessoas, opera de forma inteiramente automática.</p>
+      </div>
+      <ul class="checklist">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Identificação do músculo</b><span>Durante a micção, interrompa o fluxo por um segundo e
+              observe qual grupo muscular foi ativado — esse é o músculo-alvo do treino.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Contrações de curta duração</b><span>Contraia por 3 segundos, relaxe por 3 segundos.
+              Repita em séries de 10, duas vezes ao dia.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Contrações de longa duração</b><span>Após duas semanas de prática, aumente para
+              contrações de 8 a 10 segundos, com relaxamento equivalente.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Respiração acoplada</b><span>Contraia ao expirar e relaxe ao inspirar — isso evita
+              tensão desnecessária em outras regiões do corpo.</span></div>
+        </li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        A consistência importa mais que a intensidade. Resultados perceptíveis em consciência corporal e sensibilidade
+        costumam aparecer entre 4 e 6 semanas de prática regular. Em caso de dúvida ou desconforto, um fisioterapeuta
+        pélvico é o profissional indicado para orientação individualizada.
+      </div>
+    </div>
+    <div class="page-footer"><span>23</span>
+      <div class="rule"></div><span>Cap. 05 — Fortalecimento Pélvico</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 24 — PRESENÇA E PROXIMIDADE -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>Foco no Conforto e na Proximidade</h2>
+        <p class="sub">Construindo segurança física antes da intensidade</p>
+      </div>
+      <div class="body-text">
+        <p>Antes de qualquer exploração de ritmo ou intensidade, existe uma base que sustenta tudo o mais: o conforto
+          físico. Corpos tensos, desconfortáveis ou mal posicionados gastam energia mental tentando se ajustar — energia
+          que deveria estar disponível para a conexão em si.</p>
+        <p>Investir tempo real em encontrar a proximidade que faz os dois corpos relaxarem por completo não é um "passo
+          perdido": é o alicerce sobre o qual toda a experiência seguinte se apoia. Casais que pulam essa etapa, por
+          ansiedade ou pressa, frequentemente relatam sensação de desconexão mesmo em momentos fisicamente intensos.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Testem o peso e o apoio.</b><span class="d">Ajustem travesseiros, posição dos braços e distribuição de
+            peso até que nenhum dos dois sinta esforço muscular desnecessário.</span></li>
+        <li><b>Priorizem o contato de pele total.</b><span class="d">Quanto maior a área de contato entre os corpos,
+            maior a sensação de envolvimento e segurança emocional.</span></li>
+        <li><b>Deixem o ritmo nascer da respiração.</b><span class="d">Não busquem um ritmo "ideal" — deixem que a
+            respiração compartilhada dite naturalmente o compasso.</span></li>
+        <li><b>Perguntem sem interromper o clima.</b><span class="d">Um simples "assim está bom?" sussurrado mantém a
+            comunicação aberta sem quebrar a atmosfera.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        O conforto físico não é o oposto da intensidade — é a condição que permite que a intensidade aconteça sem
+        reserva ou distração.
+      </div>
+    </div>
+    <div class="page-footer"><span>24</span>
+      <div class="rule"></div><span>Cap. 05 — Conforto e Proximidade</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 25 — CONTROLE DE RITMO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>Controle de Ritmo e Prolongamento</h2>
+        <p class="sub">A arte da pausa consciente</p>
+      </div>
+      <div class="body-text">
+        <p>Um dos maiores equívocos sobre intimidade prolongada é achar que ela depende de resistência física. Na
+          prática, depende muito mais de <b>modulação</b> — a capacidade de alternar entre intensidade e desaceleração,
+          sem pressa de "chegar a algum lugar".</p>
+        <p>A pausa consciente não é uma interrupção; é uma ferramenta. Casais que aprendem a desacelerar no auge, em vez
+          de forçar a continuidade, relatam experiências mais longas e mais intensas do que aqueles que mantêm um único
+          ritmo do início ao fim.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Reconheçam o próprio pico de intensidade.</b><span class="d">Aprendam a identificar, no próprio corpo, o
+            momento em que a sensação está no limite — essa percepção é treinável com prática.</span></li>
+        <li><b>Desacelerem sem parar de vez.</b><span class="d">Reduzir a intensidade do movimento, sem interromper o
+            contato, prolonga a experiência sem quebrar a conexão.</span></li>
+        <li><b>Usem a respiração para "descer".</b><span class="d">Respirações longas e profundas ajudam o sistema
+            nervoso a recuar levemente da intensidade máxima.</span></li>
+        <li><b>Comuniquem o momento de pausa.</b><span class="d">Uma palavra combinada previamente ("devagar", por
+            exemplo) sincroniza os dois sem quebrar o clima com uma frase longa.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Pratiquem a pausa consciente fora de momentos íntimos também — em exercícios de respiração compartilhada. O
+        corpo aprende a desacelerar com prática, como qualquer outra habilidade.
+      </div>
+    </div>
+    <div class="page-footer"><span>25</span>
+      <div class="rule"></div><span>Cap. 05 — Controle de Ritmo</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 26 — CONEXÃO OLHO NO OLHO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>Contato Visual e Intimidade Profunda</h2>
+        <p class="sub">Por que olhar nos olhos muda tudo</p>
+      </div>
+      <div class="body-text">
+        <p>O contato visual prolongado ativa circuitos cerebrais ligados ao apego e à confiança — os mesmos que se
+          ativam nos primeiros meses de uma relação, quando cada olhar parecia carregar um significado inteiro. Com o
+          tempo, a maioria dos casais perde esse hábito, mesmo durante momentos de intimidade física intensa: os olhos
+          se fecham, o rosto se afasta, o foco vai para a sensação e não para o parceiro.</p>
+        <p>Reintroduzir o olhar como parte ativa da intimidade — e não como um acidente ocasional — aprofunda a
+          experiência de um jeito que nenhuma técnica física substitui.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Comecem antes de qualquer toque.</b><span class="d">Alguns segundos de olhar sustentado, em silêncio,
+            antes de qualquer movimento, já estabelece o tom de presença.</span></li>
+        <li><b>Resistam ao impulso de desviar.</b><span class="d">É natural fechar os olhos em momentos intensos — o
+            convite aqui é notar esse impulso e, quando possível, voltar ao olhar.</span></li>
+        <li><b>Aproximem os rostos, não só os corpos.</b><span class="d">Manter os rostos próximos, mesmo em posições
+            que naturalmente afastam o olhar, exige ajuste consciente e vale a pena.</span></li>
+        <li><b>Sorriam no meio do processo.</b><span class="d">Um sorriso espontâneo durante um olhar sustentado
+            comunica cumplicidade de um jeito que nenhuma palavra alcança.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Testem manter o olhar por 60 segundos seguidos, fora do quarto, como exercício. A maioria dos casais relata
+        desconforto inicial — sinal de quanto esse hábito se perdeu.
+      </div>
+    </div>
+    <div class="page-footer"><span>26</span>
+      <div class="rule"></div><span>Cap. 05 — Conexão Olho no Olho</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 27 — COMUNICAÇÃO NO CALOR DO MOMENTO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>A Linguagem do Corpo em Movimento</h2>
+        <p class="sub">Comunicando desejo sem quebrar o clima</p>
+      </div>
+      <div class="body-text">
+        <p>Muitos casais evitam falar durante a intimidade por medo de "quebrar o clima" — e acabam, sem perceber,
+          trocando informação real por suposição. O resultado é um momento fisicamente presente, mas comunicativamente
+          silencioso, onde cada um tenta adivinhar o que o outro está sentindo.</p>
+        <p>Existe uma linguagem própria para esses momentos — mais feita de som, respiração e pequenos gestos do que de
+          frases completas. Aprender a usá-la (e a interpretá-la no parceiro) é uma das habilidades mais subestimadas da
+          intimidade de longo prazo.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Sons como sinalização.</b><span class="d">Um suspiro mais longo, uma respiração que acelera — esses
+            sinais comunicam intensidade sem precisar de palavras.</span></li>
+        <li><b>Palavras curtas, não frases.</b><span class="d">"Assim", "mais", "devagar" — frases curtas mantêm a
+            comunicação viva sem exigir elaboração no meio do momento.</span></li>
+        <li><b>Toque como resposta.</b><span class="d">Guiar a mão do parceiro é uma forma de comunicação tão válida
+            quanto a fala — e muitas vezes mais precisa.</span></li>
+        <li><b>Validem o que funciona.</b><span class="d">Um simples "isso" ou um gemido de aprovação reforça
+            positivamente o que está gerando conexão.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Pratiquem nomear sensações fora do quarto, em conversas leves. Quanto mais natural for o vocabulário do desejo
+        no dia a dia, mais fácil ele flui no momento certo.
+      </div>
+    </div>
+    <div class="page-footer"><span>27</span>
+      <div class="rule"></div><span>Cap. 05 — A Linguagem do Corpo em Movimento</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 28 — SINCRONIA E ENCERRAMENTO MÚTUO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 05</div>
+        <h2>Sincronia como Objetivo Compartilhado</h2>
+        <p class="sub">Cuidando do ritmo do outro como se fosse o próprio</p>
+      </div>
+      <div class="body-text">
+        <p>Um dos maiores geradores de ansiedade silenciosa na intimidade de casal é a sensação de estar "em ritmos
+          diferentes" — um chegando à intensidade máxima muito antes do outro, ou um se sentindo pressionado a
+          acompanhar um tempo que não é o seu. Essa dessincronia, quando não é conversada, vira fonte de frustração
+          recorrente.</p>
+        <p>A boa notícia é que sincronia não é um dom raro — é o resultado direto de atenção mútua treinada ao longo do
+          tempo, das ferramentas já apresentadas neste capítulo: respiração compartilhada, comunicação verbal e
+          não-verbal, e disposição genuína para ajustar o próprio ritmo ao do parceiro.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Tratem o momento do outro como prioridade.</b><span class="d">Perguntem-se, com frequência: "o que
+            ajudaria meu parceiro agora?" — em vez de focar exclusivamente na própria experiência.</span></li>
+        <li><b>Aceitem que sincronia perfeita é rara.</b><span class="d">O objetivo não é sempre "chegar juntos" — é
+            permanecer conectados independentemente da ordem.</span></li>
+        <li><b>Prolonguem a atenção após o pico de um dos dois.</b><span class="d">Continuar presente e ativo mesmo
+            depois do próprio momento de intensidade é um gesto de generosidade que fortalece a confiança.</span></li>
+        <li><b>Conversem sobre isso fora do quarto.</b><span class="d">Alinhar expectativas sobre ritmo, sem cobrança,
+            evita que a dessincronia vire um assunto tabu.</span></li>
+      </ul>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        A verdadeira sincronia não está em coincidir o tempo — está em nunca deixar o parceiro se sentir sozinho dentro
+        do próprio ritmo.
+      </div>
+    </div>
+    <div class="page-footer"><span>28</span>
+      <div class="rule"></div><span>Cap. 05 — Sincronia como Objetivo Compartilhado</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 29 — VARIANDO O CARDÁPIO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 06</div>
+        <h2>Variando o Cardápio</h2>
+        <p class="sub">Estímulos sensoriais, texturas e novidade</p>
+      </div>
+      <div class="body-text">
+        <p>O cérebro humano é, por natureza, um caçador de novidade. Cada textura nova, cada estímulo sensorial
+          diferente do habitual, dispara uma pequena onda de dopamina — o mesmo neurotransmissor ligado à motivação, ao
+          prazer antecipatório e à sensação de "estar vivo" em um momento.</p>
+        <p>Introduzir variação sensorial na intimidade do casal não é sobre "precisar" de algo além do parceiro — é
+          sobre dar ao cérebro novos dados para processar, o que mantém a experiência longe do automático.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Texturas contrastantes.</b><span class="d">Alternar entre superfícies macias (seda, pele) e ligeiramente
+            ásperas (renda, algodão cru) cria variação tátil perceptível.</span></li>
+        <li><b>Temperatura como estímulo.</b><span class="d">Um tecido levemente frio ou uma bebida gelada compartilhada
+            antes do momento ativa sensibilidade extra na pele.</span></li>
+        <li><b>Vendas e privação temporária da visão.</b><span class="d">Remover um sentido intensifica automaticamente
+            os outros — o tato e a audição ficam significativamente mais aguçados.</span></li>
+        <li><b>Acessórios de estímulo compartilhado.</b><span class="d">Itens desenhados para uso a dois (não
+            individual) reforçam a ideia de exploração conjunta, não de substituição.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Comecem pela variação mais simples e barata: um lenço de seda. Novidade não exige investimento alto — exige
+        intenção.
+      </div>
+    </div>
+    <div class="page-footer"><span>29</span>
+      <div class="rule"></div><span>Cap. 06 — Variando o Cardápio</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 30 — PSICOLOGIA DO ACESSÓRIO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 06</div>
+        <h2>Psicologia do Acessório</h2>
+        <p class="sub">Introduzindo novidades sem constrangimento</p>
+      </div>
+      <div class="body-text">
+        <p>A resistência a introduzir qualquer novidade na intimidade raramente é sobre o item em si — é sobre o
+          significado que se imagina que ele carrega. Muita gente teme que sugerir algo novo seja interpretado como "o
+          parceiro não é suficiente", quando na maioria das vezes é exatamente o oposto: é um convite para explorar mais
+          fundo essa relação específica.</p>
+        <p>A forma como a conversa é conduzida define se a novidade vira empolgação compartilhada ou insegurança
+          silenciosa.</p>
+      </div>
+      <div class="script">
+        <div class="line"><span class="who">Abordagem 1 · Curiosidade compartilhada</span><span class="say">"Vi uma
+            coisa outro dia e fiquei curioso(a) para experimentar com você. Você toparia dar uma olhada comigo?"</span>
+        </div>
+        <div class="line"><span class="who b">Por que funciona</span><span class="say">Coloca a decisão como conjunta
+            desde o início, sem pressão de resposta imediata.</span></div>
+      </div>
+      <div class="script">
+        <div class="line"><span class="who">Abordagem 2 · Reforço de vínculo</span><span class="say">"Isso não muda nada
+            do que já temos — é só mais uma forma de explorar a gente."</span></div>
+        <div class="line"><span class="who b">Por que funciona</span><span class="say">Desarma a insegurança de
+            comparação antes mesmo que ela apareça.</span></div>
+      </div>
+      <ul class="checklist" style="margin-top:auto;">
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Escolham juntos, nunca por conta própria</b><span>A decisão compartilhada reduz
+              drasticamente a sensação de imposição.</span></div>
+        </li>
+        <li>
+          <div class="box-check"></div>
+          <div class="label"><b>Estabeleçam uma palavra de saída</b><span>Um sinal combinado para "pausar tudo" sem
+              constrangimento dá segurança para explorar com liberdade.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="page-footer"><span>30</span>
+      <div class="rule"></div><span>Cap. 06 — Psicologia do Acessório</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 31 — A ARQUITETURA DA PRÓPRIA CASA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 06</div>
+        <h2>Quebrando as Regras do Espaço</h2>
+        <p class="sub">Sair da cama sem sair de casa</p>
+      </div>
+      <div class="body-text">
+        <p>O quarto de casal carrega, para a maioria dos casais, décadas de associação com uma única função: dormir.
+          Mesmo quando é também palco da intimidade, a repetição do mesmo cômodo, na mesma cama, reforça a sensação de
+          rotina — o cérebro processa o espaço como "conhecido" antes mesmo de qualquer coisa acontecer nele.</p>
+        <p>Mudar de cômodo, ainda que dentro da própria casa, é uma das formas mais simples e subestimadas de sinalizar
+          ao cérebro que "isso é diferente" — sem custo, sem logística de viagem, apenas com disposição.</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Espaço</th>
+          <th>Por que funciona</th>
+        </tr>
+        <tr>
+          <td class="h">Sofá da sala</td>
+          <td>Ambiente associado a lazer e conversa, não a sono — gera uma energia diferente naturalmente.</td>
+        </tr>
+        <tr>
+          <td class="h">Banheiro / Box do chuveiro</td>
+          <td>A água quente relaxa o corpo e cria um cenário sensorial completamente distinto do quarto.</td>
+        </tr>
+        <tr>
+          <td class="h">Cozinha (fora do horário de uso)</td>
+          <td>Território geralmente ligado à rotina prática — usá-lo para outro fim quebra a associação automática.</td>
+        </tr>
+        <tr>
+          <td class="h">Área externa privativa</td>
+          <td>Varanda ou quintal, se houver privacidade garantida, adicionam elementos sensoriais como brisa e
+            temperatura.</td>
+        </tr>
+      </table>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Combinem previamente o nível de privacidade da casa (portas, filhos, horários) antes de qualquer mudança de
+        cômodo — segurança emocional vem antes de qualquer novidade.
+      </div>
+    </div>
+    <div class="page-footer"><span>31</span>
+      <div class="rule"></div><span>Cap. 06 — A Arquitetura da Própria Casa</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 32 — AVENTURAS FORA DE CASA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 06</div>
+        <h2>Recriando o Primeiro Encontro</h2>
+        <p class="sub">Planejando saídas que resgatam a expectativa inicial</p>
+      </div>
+      <div class="body-text">
+        <p>Nos primeiros encontros de uma relação, cada detalhe é carregado de expectativa: a escolha da roupa, o
+          trajeto até o local, a ansiedade boa de não saber exatamente como a noite vai terminar. Com o tempo, essa
+          expectativa se dissolve na certeza confortável da rotina — o que é bom para a segurança do vínculo, mas custa
+          caro ao desejo.</p>
+        <p>Recriar deliberadamente os elementos de um primeiro encontro, mesmo depois de anos juntos, reativa esse
+          estado mental de antecipação que tanto alimenta o desejo.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Marquem sem revelar o plano completo.</b><span class="d">"Te busco às 20h, se arruma bonito(a)" gera mais
+            expectativa do que qualquer roteiro detalhado.</span></li>
+        <li><b>Escolham um local novo, mesmo que próximo.</b><span class="d">Não precisa ser longe — precisa ser
+            inexplorado pelos dois juntos.</span></li>
+        <li><b>Tratem-se como em um encontro real.</b><span class="d">Se arrumem com cuidado extra, cheguem em horários
+            separados se possível, flertem como se fosse a primeira vez.</span></li>
+        <li><b>Reservem a "chegada em casa" como parte do plano.</b><span class="d">A tensão construída durante a saída
+            deve ter um destino — o retorno para casa faz parte da experiência, não é um detalhe à parte.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Proíbam assuntos de logística doméstica durante a saída. A regra simples de "hoje não falamos sobre contas ou
+        agenda" já muda o tom da noite inteira.
+      </div>
+    </div>
+    <div class="page-footer"><span>32</span>
+      <div class="rule"></div><span>Cap. 06 — Recriando o Primeiro Encontro</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 33 — O MENU DO PRAZER -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 07</div>
+        <h2>O Menu do Prazer</h2>
+        <p class="sub">Como funciona o Desafio de 3 Fins de Semana</p>
+      </div>
+      <div class="body-text">
+        <p>Todo o conteúdo deste guia, até aqui, oferece ferramentas — mas ferramentas só transformam uma relação quando
+          são usadas com consistência. O "Menu do Prazer" é uma estrutura prática de três fins de semana, pensada para
+          transformar teoria em hábito, sem pressão de performance.</p>
+        <p>Cada fim de semana tem um nível de intensidade progressivo, e a regra mais importante do desafio é simples:
+          <b>nenhuma etapa é obrigatória</b>. O objetivo não é "completar" o menu — é usá-lo como ponto de partida para
+          o ritmo que faz sentido para o casal.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Nível 1 · Descoberta.</b><span class="d">Foco em comunicação e reconexão através do toque, sem pressão de
+            avançar para nada além disso.</span></li>
+        <li><b>Nível 2 · Conexão.</b><span class="d">Foco em prolongamento, presença e sincronia — aprofundando o que
+            foi praticado no nível anterior.</span></li>
+        <li><b>Nível 3 · Intensidade.</b><span class="d">Foco em ousadia combinada e exploração de limites já
+            conversados e consentidos por ambos.</span></li>
+      </ul>
+      <div class="box avoid" style="margin-top:auto;">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Pular direto para o Nível 3 "para acelerar resultados". A progressão existe porque cada etapa constrói a
+        segurança emocional necessária para a próxima.
+      </div>
+    </div>
+    <div class="page-footer"><span>33</span>
+      <div class="rule"></div><span>Cap. 07 — O Menu do Prazer</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 34 — DESAFIO FIM DE SEMANA 1 -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 07</div>
+        <h2>Fim de Semana 1 — Nível Descoberta</h2>
+        <p class="sub">Comunicação e toque, do zero à conexão</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Momento</th>
+          <th>Atividade</th>
+        </tr>
+        <tr>
+          <td class="h">Sexta · Noite</td>
+          <td>Conversa de 20 minutos, sem celular, respondendo juntos: "o que sentimos falta um do outro ultimamente?"
+          </td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Manhã</td>
+          <td>Envio de uma mensagem nível leve (Capítulo 3) sem revelar planos do dia.</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Tarde</td>
+          <td>Exercício do espelho guiado (Capítulo 2) — 1 minuto de presença, sem comentários sobre o corpo.</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Noite</td>
+          <td>Sessão de massagem sensual completa (Capítulo 4), com foco total nas zonas periféricas exploradas na
+            Página 21.</td>
+        </tr>
+        <tr>
+          <td class="h">Domingo</td>
+          <td>Conversa de fechamento: o que surpreendeu, o que gostariam de repetir, o que querem levar para o próximo
+            nível.</td>
+        </tr>
+      </table>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Este fim de semana não precisa culminar em nada além do que já foi proposto. A meta é reconstruir o hábito de se
+        tocar e se ouvir sem pressa.
+      </div>
+    </div>
+    <div class="page-footer"><span>34</span>
+      <div class="rule"></div><span>Cap. 07 — Fim de Semana 1</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 35 — DESAFIO FIM DE SEMANA 2 -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 07</div>
+        <h2>Fim de Semana 2 — Nível Conexão</h2>
+        <p class="sub">Prolongamento e sintonização</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Momento</th>
+          <th>Atividade</th>
+        </tr>
+        <tr>
+          <td class="h">Sexta · Noite</td>
+          <td>Ativação do Jogo do Flerte Noturno (Capítulo 3) ao longo de todo o dia seguinte.</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Manhã</td>
+          <td>Prática combinada de fortalecimento pélvico (Página 23), individualmente, com check-in de sensações à
+            noite.</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Tarde</td>
+          <td>Recriação de um primeiro encontro (Página 32), com saída planejada e sem falar de logística doméstica.
+          </td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Noite</td>
+          <td>Aplicação prática do Manual da Sinergia Corporal (Página 22): respiração sincronizada e alternância de
+            quem conduz o ritmo.</td>
+        </tr>
+        <tr>
+          <td class="h">Domingo</td>
+          <td>Exercício de contato visual sustentado (Página 26) por 60 segundos, seguido de conversa sobre o que essa
+            prática revelou.</td>
+        </tr>
+      </table>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Este é o fim de semana que costuma gerar as descobertas mais profundas — porque exige presença, não performance.
+      </div>
+    </div>
+    <div class="page-footer"><span>35</span>
+      <div class="rule"></div><span>Cap. 07 — Fim de Semana 2</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 36 — DESAFIO FIM DE SEMANA 3 -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 07</div>
+        <h2>Fim de Semana 3 — Nível Intensidade</h2>
+        <p class="sub">Ousadia combinada e exploração de limites</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Momento</th>
+          <th>Atividade</th>
+        </tr>
+        <tr>
+          <td class="h">Antes do fim de semana</td>
+          <td>Conversa dedicada usando o Script de Pedidos (Capítulo 2) para alinhar o que cada um gostaria de
+            experimentar.</td>
+        </tr>
+        <tr>
+          <td class="h">Sexta · Noite</td>
+          <td>Troca de mensagens nível ousado (Capítulo 3), já combinadas previamente como confortáveis para ambos.</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Tarde</td>
+          <td>Escolha conjunta de um estímulo sensorial novo (Capítulo 6) para introduzir à noite, seguindo a Psicologia
+            do Acessório (Página 30).</td>
+        </tr>
+        <tr>
+          <td class="h">Sábado · Noite</td>
+          <td>Quebra de cenário (Capítulo 4 + Página 31): mudança de cômodo dentro de casa, combinando os elementos
+            trabalhados nos capítulos anteriores.</td>
+        </tr>
+        <tr>
+          <td class="h">Domingo</td>
+          <td>Conversa final do desafio completo: o que os três fins de semana mudaram na relação, e o que vale manter
+            como ritual fixo.</td>
+        </tr>
+      </table>
+      <div class="box avoid" style="margin-top:auto;">
+        <span class="box-title">❌ Evite a Todo Custo</span>
+        Introduzir qualquer novidade deste nível sem antes ter estabelecido, com clareza, uma palavra de saída e o
+        consentimento explícito dos dois.
+      </div>
+    </div>
+    <div class="page-footer"><span>36</span>
+      <div class="rule"></div><span>Cap. 07 — Fim de Semana 3</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 37 — O PÓS-MOMENTO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 08</div>
+        <h2>O Pós-Momento</h2>
+        <p class="sub">Prolongando a química cerebral do vínculo</p>
+      </div>
+      <div class="body-text">
+        <p>Depois da intimidade física, o corpo libera uma combinação de ocitocina e prolactina — hormônios diretamente
+          ligados à sensação de apego, calma e conexão. É uma janela biológica curta, mas poderosa, em que o vínculo do
+          casal está naturalmente mais receptivo. E, ainda assim, é uma das etapas mais desperdiçadas: um pega o
+          celular, o outro adormece, e a oportunidade passa em silêncio.</p>
+        <p>O "pós-momento" bem cuidado não é sobre prolongar o ato em si — é sobre não desperdiçar essa janela de
+          proximidade emocional que o corpo já preparou.</p>
+      </div>
+      <ul class="styled-list">
+        <li><b>Mantenham o contato físico.</b><span class="d">Ficar abraçado, mesmo em silêncio, por alguns minutos
+            extras prolonga o efeito hormonal do vínculo.</span></li>
+        <li><b>Evitem o celular nos primeiros 10 minutos.</b><span class="d">É exatamente a janela em que a distração
+            tem o custo emocional mais alto.</span></li>
+        <li><b>Verbalizem algo específico.</b><span class="d">Um comentário sincero sobre o que foi bom — não genérico —
+            reforça a conexão emocional recém-criada.</span></li>
+        <li><b>Cuidem do corpo do outro.</b><span class="d">Um copo d'água, um cobertor, um carinho no cabelo — pequenos
+            gestos de cuidado fecham o momento com afeto.</span></li>
+      </ul>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Casais que mantêm esse ritual de proximidade pós-intimidade relatam, de forma recorrente, sensação de vínculo
+        mais forte ao longo da semana seguinte.
+      </div>
+    </div>
+    <div class="page-footer"><span>37</span>
+      <div class="rule"></div><span>Cap. 08 — O Pós-Momento</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 38 — MANTENDO A CHAMA ACESA -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Capítulo 08</div>
+        <h2>Mantendo a Chama Acesa a Longo Prazo</h2>
+        <p class="sub">Plano de manutenção mensal do casal</p>
+      </div>
+      <div class="body-text">
+        <p>Todo o trabalho feito até aqui corre o risco de se perder se não virar hábito. A boa notícia é que manutenção
+          exige muito menos esforço do que reconstrução — um casal que investe pouco, mas com constância, gasta uma
+          fração da energia que gastaria voltando a esfriar por completo.</p>
+      </div>
+      <table class="plan">
+        <tr>
+          <th>Frequência</th>
+          <th>Ritual sugerido</th>
+        </tr>
+        <tr>
+          <td class="h">Diária</td>
+          <td>Um item do Botão de Emergência (Capítulo 3) — pequeno, sem anúncio, sem cobrança de resposta.</td>
+        </tr>
+        <tr>
+          <td class="h">Semanal</td>
+          <td>Uma conversa de 15 minutos sem celular, revisitando o Diário de Conexão (Capítulo 1).</td>
+        </tr>
+        <tr>
+          <td class="h">Quinzenal</td>
+          <td>Uma noite com o ambiente preparado (Capítulo 4) — mesmo que simples, mantém o ritual do "cenário especial"
+            vivo.</td>
+        </tr>
+        <tr>
+          <td class="h">Mensal</td>
+          <td>Um encontro fora de casa (Página 32), recriando ainda que brevemente a atmosfera de primeiro encontro.
+          </td>
+        </tr>
+        <tr>
+          <td class="h">Trimestral</td>
+          <td>Revisão do Menu do Prazer (Capítulo 7) — repetir um nível ou avançar para novos territórios combinados
+            juntos.</td>
+        </tr>
+      </table>
+      <div class="box alert" style="margin-top:auto;">
+        <span class="box-title">🔥 Alerta de Prazer</span>
+        Nenhum casal mantém intensidade constante — e está tudo bem. O objetivo da manutenção não é viver em pico
+        permanente, é nunca deixar a chama apagar de vez.
+      </div>
+    </div>
+    <div class="page-footer"><span>38</span>
+      <div class="rule"></div><span>Cap. 08 — Mantendo a Chama Acesa</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 39 — CONCLUSÃO -->
+  <!-- ================================================================ -->
+  <div class="page">
+    <div class="frame"></div>
+    <div class="content">
+      <div class="section-head">
+        <div class="num">Encerramento</div>
+        <h2>O Novo Capítulo do Seu Relacionamento</h2>
+        <p class="sub">O que muda a partir de agora</p>
+      </div>
+      <div class="body-text" style="max-width:520px;">
+        <p>Se você chegou até aqui, já sabe que este guia nunca foi sobre técnicas isoladas ou fórmulas mágicas. Foi, do
+          início ao fim, sobre uma decisão: a de tratar o desejo mútuo como algo que merece tempo, intenção e cuidado —
+          assim como qualquer outra parte importante da vida a dois.</p>
+        <p>As páginas anteriores trouxeram ferramentas de comunicação, presença corporal, ambientação, exploração
+          sensorial e rituais de manutenção. Mas nenhuma delas funciona sozinha, de forma isolada, sem o ingrediente que
+          só o casal pode oferecer: a disposição genuína de continuar tentando, mesmo quando a rotina tentar puxar vocês
+          de volta ao piloto automático.</p>
+        <p>Vocês não precisam aplicar tudo de uma vez. Escolham um capítulo, uma prática, um pequeno ritual — e comecem
+          por ali. O desejo não se reconstrói em um único fim de semana; se reconstrói na soma de pequenas escolhas
+          repetidas, feitas com intenção, semana após semana.</p>
+        <p>Que este guia continue sendo, daqui em diante, menos um livro fechado na estante e mais um mapa aberto ao
+          lado da cama — consultado, reescrito e adaptado ao ritmo único que só vocês dois conhecem.</p>
+      </div>
+      <div class="box secret" style="margin-top:auto;">
+        <span class="box-title">💡 Truque Secreto</span>
+        Voltem a este guia daqui a três meses. A relação de vocês terá mudado — e, com ela, o que fizer sentido explorar
+        também.
+      </div>
+    </div>
+    <div class="page-footer"><span>39</span>
+      <div class="rule"></div><span>Encerramento — O Novo Capítulo</span>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PÁGINA 40 — PÁGINA FINAL / CTA -->
+  <!-- ================================================================ -->
+  <div class="page cover">
+    <div class="frame"></div>
+    <div class="content" style="align-items:center; justify-content:center;">
+      <div class="ornament">✦ ✦ ✦</div>
+      <div class="eyebrow">Método Reacender · Considerações Finais</div>
+      <h1 style="font-size:38px;">Obrigado por<br><span class="accent-word">chegarem até aqui</span></h1>
+      <hr class="divider">
+      <p class="subtitle">Este guia foi escrito para ser vivido, não arquivado. Voltem a ele sempre que a rotina pedir
+        um lembrete de que o desejo mútuo é, antes de tudo, uma escolha diária do casal.</p>
+      <div class="tagline-box">Método Reacender · Fim do Guia Completo</div>
+    </div>
+    <div class="page-footer"><span>40</span>
+      <div class="rule"></div><span>Além das Quatro Paredes</span>
+    </div>
+  </div>
+</body>
+
+</html>

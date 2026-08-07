@@ -12,20 +12,14 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = '2.0';
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    }(window, document, 'script');
-
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1572894074570278');
     fbq('track', 'PageView');
   </script>
@@ -1409,9 +1403,8 @@
         <div class="price-sub">pagamento único · ou 12x de R$ 3,70 no cartão</div>
 
         <div style="margin-top: 20px;">
-          <a href="https://pay.wiapy.com/sV7K8EvWyGe-" id="btn-checkout-principal" class="cta"
-            onclick="fbq('track', 'InitiateCheckout');">
-            style="max-width: 100%;">QUERO REACENDER MEU RELACIONAMENTO 🔥</a>
+          <a href="https://pay.wiapy.com/sV7K8EvWyGe-" id="btn-checkout-principal" class="cta" style="max-width: 100%;"
+            onclick="fbq('track', 'InitiateCheckout');">QUERO REACENDER MEU RELACIONAMENTO 🔥</a>
         </div>
 
         <div class="privacy-badge">

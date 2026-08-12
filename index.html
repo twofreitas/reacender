@@ -1005,6 +1005,44 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* === REVEAL ON SCROLL === */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === SECTION DIVIDER === */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 48px 0;
+    }
+    .section-divider-line {
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.3;
+    }
+    .section-divider-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0.7;
+    }
   </style>
 </head>
 
@@ -1025,25 +1063,25 @@
     <div class="block block--spacious reveal">
       <div class="label-hero">MÉTODO REACENDER</div>
 
-      <h1 class="headline" style="font-size: clamp(30px, 5.8vw, 48px); line-height: 1.15;">
+      <h1 class="headline reveal-on-scroll" style="font-size: clamp(30px, 5.8vw, 48px); line-height: 1.15;">
         Quando foi a última<br>
         vez que vocês se<br>
         <span class="hl-red">desejaram de verdade</span><br>
         na mesma cama? 😈
       </h1>
 
-      <p class="subheadline">
+      <p class="subheadline reveal-on-scroll">
         Vocês ainda se amam — mas <strong>o corpo parou de falar</strong>. Aquele arrepio ao se tocar, o olhar que dizia tudo, a vontade de arrancar a roupa do outro… tudo isso <strong>ainda mora dentro de vocês</strong>. Só precisa de uma faísca para incendiar de novo.
       </p>
 
       <!-- HERO MEDIA -->
-      <div class="hero-media" style="max-width: 500px;">
+      <div class="hero-media reveal-on-scroll" style="max-width: 500px;">
         <img src="images/hero_couple.png" alt="Casal intimista em momento de carinho e paixão" width="500" height="320"
           loading="eager">
         <div class="hero-media-caption">A intimidade é o motor da relação, não a consequência. Comece por ela — mesmo que só VOCÊ dê o primeiro passo.</div>
       </div>
 
-      <div style="margin-top: 24px;">
+      <div style="margin-top: 24px;" class="reveal-on-scroll">
         <a href="#oferta" class="cta">QUERO REACENDER O DESEJO HOJE 🔥</a>
         <div class="cta-subnote">
           <span>🛡️ Garantia Total de 7 Dias</span>
@@ -1054,20 +1092,25 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 1: AGITAÇÃO DA DOR (PAS FRAMEWORK) ======== -->
     <div class="block reveal">
       <span class="label">Antes Que Seja Tarde</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Vocês já dormem como <span class="hl">dois estranhos</span> na mesma cama?
       </h2>
 
-      <p class="body-text" style="max-width: 500px; margin: 14px auto 0;">
+      <p class="body-text reveal-on-scroll" style="max-width: 500px; margin: 14px auto 0;">
         Nenhum casal perde o desejo da noite pro dia. É um veneno lento: começa com o silêncio na cama, avança para a frieza no toque e termina no dia em que vocês <strong>nem lembram como era se desejarem</strong>.
       </p>
 
       <!-- PAIN AGITATION BOX -->
-      <div class="pain-box">
+      <div class="pain-box reveal-on-scroll">
         <div class="pain-box-title">
           <span>⚠️</span> O Preço de Deixar a Intimidade Morrer:
         </div>
@@ -1077,7 +1120,7 @@
       </div>
 
       <!-- SYMPTOMS GRID -->
-      <div class="symptoms-grid">
+      <div class="symptoms-grid reveal-on-scroll">
         <div class="symptom-card">
           <div class="symptom-title">📱 Dois corpos na mesma cama, zero contato</div>
           <div class="symptom-desc">Cada um virado pra sua tela, sem nem encostar um no outro. O celular se tornou mais íntimo que o seu parceiro(a).</div>
@@ -1098,20 +1141,25 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 2: O MECANISMO ÚNICO (POR QUE FUNCIONA) ======== -->
     <div class="block reveal">
       <span class="label">A Virada Começa na Pele</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Sua relação muda quando o <span class="hl">desejo muda primeiro</span>
       </h2>
 
-      <p class="body-text" style="max-width: 500px; margin: 12px auto 0;">
+      <p class="body-text reveal-on-scroll" style="max-width: 500px; margin: 12px auto 0;">
         Cobrar atenção, reclamar da frieza ou "discutir a relação" só empurra o outro pra mais longe. <strong>Desejo não se exige — desejo se acende.</strong> Quando a intimidade renasce, o carinho, o respeito e a cumplicidade voltam sozinhos.
       </p>
 
       <!-- MECHANISM CARD -->
-      <div class="mechanism-card">
+      <div class="mechanism-card reveal-on-scroll">
         <div class="mechanism-title">🔥 O Princípio da Atração Reversa</div>
         <p style="font-size: 14px; color: var(--text-dim); line-height: 1.65;">
           O <strong>Método Reacender</strong> não pede que vocês "conversem sobre sentimentos" nem faz você assistir a palestras teóricas. Ele ensina micro-comportamentos sensoriais e provocações sutis que <strong>reativam o circuito do desejo e da atração</strong> no cérebro do seu parceiro(a) — como se fosse o começo do namoro de novo.
@@ -1124,20 +1172,25 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 3: IMAGINE VOLTAR A SENTIR ======== -->
     <div class="block reveal">
       <span class="label">Sinta de Novo</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Em <span class="hl">7 dias</span>, a temperatura da sua casa vai mudar... 😏
       </h2>
 
-      <div class="hero-media" style="max-width: 480px; margin-top: 20px;">
+      <div class="hero-media reveal-on-scroll" style="max-width: 480px; margin-top: 20px;">
         <img src="images/method_preview.png" alt="Casal se abraçando com paixão renovada" width="480" height="280"
           loading="lazy">
       </div>
 
-      <div class="check-list" style="max-width: 500px; margin: 20px auto 0;">
+      <div class="check-list reveal-on-scroll" style="max-width: 500px; margin: 20px auto 0;">
         <div class="check-row">
           <div class="check-icon">✓</div>
           <div class="check-text">Mensagens provocantes que fazem seu parceiro(a) contar os segundos para chegar em casa — e mal conseguir esperar até o quarto.</div>
@@ -1156,20 +1209,25 @@
         </div>
       </div>
 
-      <div style="margin-top: 22px;">
+      <div style="margin-top: 22px;" class="reveal-on-scroll">
         <a href="#oferta" class="cta">QUERO ESSA TRANSFORMAÇÃO AGORA 🔥</a>
       </div>
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 4: MÓDULOS COM FASCINATIONS DE CURIOSIDADE ======== -->
     <div class="block reveal">
       <span class="label">Passo a Passo Sensorial</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         O que você vai <span class="hl">despertar e dominar</span>
       </h2>
-      <p class="body-text" style="max-width: 480px; margin: 10px auto 24px;">
+      <p class="body-text reveal-on-scroll" style="max-width: 480px; margin: 10px auto 24px;">
         7 etapas práticas e sensoriais. Sem teoria chata. Resultados que você sente na pele — literalmente — nos primeiros dias:
       </p>
 
@@ -1238,59 +1296,64 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 5: BÔNUS EXCLUSIVOS ======== -->
     <div class="block reveal">
       <span class="label">Aceleradores de Desejo</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Leve também 7 Bônus para <span class="hl">Esquentar Mais Rápido</span> 😈
       </h2>
 
-      <div class="bonus-grid">
+      <div class="bonus-grid reveal-on-scroll">
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 47 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 19,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 01</span>
           <div class="bonus-title">100 Mensagens que Acendem o Desejo</div>
           <div class="bonus-desc">Copie, cole e envie. Mensagens provocantes e sensuais que criam uma tensão deliciosa o dia inteiro — e fazem o outro chegar em casa com pressa.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 37 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 14,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 02</span>
           <div class="bonus-title">Checklist da Noite Inesquecível</div>
           <div class="bonus-desc">O roteiro infalível para criar noites que terminam com arrepio, não com TV — sem precisar gastar fortunas nem sair de casa.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 47 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 17,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 03</span>
           <div class="bonus-title">50 Encontros Fora do Comum</div>
           <div class="bonus-desc">Programas criativos que quebram a mesmice e reativam aquele frio na barriga de quando vocês se paqueiravam.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 37 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 12,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 04</span>
           <div class="bonus-title">Cartas da Intimidade Secreta</div>
           <div class="bonus-desc">Modelos de bilhetes sensuais para sussurrar no papel o que a boca ainda tem vergonha de falar — e incendiar a imaginação do outro.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 27 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 9,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 05</span>
           <div class="bonus-title">Planner Semanal do Casal</div>
           <div class="bonus-desc">Organizador simples para garantir que momentos a dois não se percam no caos da rotina — e que toda semana tenha uma noite só de vocês.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 67 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 24,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 06</span>
           <div class="bonus-title">Desafio Intensivo: 30 Noites de Fogo 🔥</div>
           <div class="bonus-desc">Uma micro-ação sensorial por dia para elevar a temperatura da casa gradativamente — até que vocês não consigam mais tirar as mãos um do outro.</div>
         </div>
 
         <div class="bonus-card">
-          <span class="bonus-value-tag">De R$ 19 por R$ 0</span>
+          <span class="bonus-value-tag">De R$ 7,90 por R$ 0</span>
           <span class="bonus-tag">Bônus 07</span>
           <div class="bonus-title">Playlist Sensual Exclusiva</div>
           <div class="bonus-desc">A trilha sonora perfeita para criar aquele clima de pele, respiração e calor entre vocês. Dê o play e deixe a música fazer o resto. 🎵</div>
@@ -1299,15 +1362,20 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 6: PARA QUEM É / NÃO É ======== -->
     <div class="block reveal">
       <span class="label">Hora da Verdade</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Este método é para vocês?
       </h2>
 
-      <div class="fit-container">
+      <div class="fit-container reveal-on-scroll">
         <div class="fit-card fit-card--yes">
           <div class="fit-header"><span>✅</span> É PARA VOCÊ SE:</div>
           <div class="fit-item"><span>✔</span> Vocês se amam, mas o desejo e o toque sumiram com a rotina.</div>
@@ -1325,11 +1393,16 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 7: DEPOIMENTOS ======== -->
     <div class="block reveal">
       <span class="label">Histórias de Quem Reacendeu</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px);">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px);">
         Casais que voltaram a se desejar 💋
       </h2>
       <p class="body-text" style="font-size: 12.5px; color: var(--text-faint); margin-top: 6px;">
@@ -1354,33 +1427,38 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 8: OFERTA & VALUE STACK (#oferta) ======== -->
     <div class="block block--spacious reveal" id="oferta">
-      <div class="offer-box">
-        <div class="offer-badge-top">OFERTA ESPECIAL — MENOS DE R$ 1,25/DIA PARA REACENDER</div>
+      <div class="offer-box reveal-on-scroll">
+        <div class="offer-badge-top">OFERTA ESPECIAL — MENOS DE R$ 0,60/DIA PARA REACENDER</div>
 
-        <h2 class="headline" style="font-size: clamp(24px, 4.5vw, 36px);">
+        <h2 class="headline reveal-on-scroll" style="font-size: clamp(24px, 4.5vw, 36px);">
           Comece pela intimidade hoje — antes que a distância vire indiferença
         </h2>
 
         <!-- VALUE STACK -->
         <div class="value-stack">
           <div class="value-stack-title">Tudo o que você recebe agora:</div>
-          <div class="stack-item"><span>✔️ Método Reacender (7 Módulos Sensoriais)</span> <strong>R$ 197,00</strong></div>
-          <div class="stack-item"><span>✔️ 7 Bônus Aceleradores de Desejo</span> <strong>R$ 281,00</strong></div>
-          <div class="stack-item"><span>✔️ Plano de Ação: 30 Dias de Fogo</span> <strong>R$ 97,00</strong></div>
+          <div class="stack-item"><span>✔️ Método Reacender (7 Módulos Sensoriais)</span> <strong>R$ 49,90</strong></div>
+          <div class="stack-item"><span>✔️ 7 Bônus Aceleradores de Desejo</span> <strong>R$ 97,00</strong></div>
+          <div class="stack-item"><span>✔️ Plano de Ação: 30 Dias de Fogo</span> <strong>R$ 19,90</strong></div>
           <div class="stack-item"><span>✔️ Acesso Vitalício & Atualizações</span> <strong>INCLUSO</strong></div>
           <div class="stack-item"
             style="border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; margin-top: 6px;">
             <span>Valor Total Acumulado:</span> <strong
-              style="text-decoration: line-through; color: var(--text-faint);">R$ 575,00</strong>
+              style="text-decoration: line-through; color: var(--text-faint);">R$ 166,80</strong>
           </div>
         </div>
 
-        <div class="price-anchor">Preço normal: R$ 197,00</div>
-        <div class="price-main">R$ 37<span>,00</span></div>
-        <div class="price-sub">pagamento único · ou 12x de R$ 3,70 no cartão</div>
+        <div class="price-anchor">Preço normal: R$ 49,90</div>
+        <div class="price-main">R$ 17<span>,90</span></div>
+        <div class="price-sub">pagamento único · ou 2x de R$ 8,95 no cartão</div>
 
         <div style="margin-top: 20px;">
           <a href="https://pay.wiapy.com/sV7K8EvWyGe-" id="btn-checkout-principal" class="cta" style="max-width: 100%;"
@@ -1403,11 +1481,16 @@
     </div>
 
     <div class="ember-line"></div>
+    <div class="section-divider">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">♥</span>
+      <span class="section-divider-line"></span>
+    </div>
 
     <!-- ======== SEÇÃO 9: FAQ ======== -->
     <div class="block reveal">
       <span class="label">Tire Suas Dúvidas</span>
-      <h2 class="headline" style="font-size: clamp(25px, 4.5vw, 36px); margin-bottom: 20px;">
+      <h2 class="headline reveal-on-scroll" style="font-size: clamp(25px, 4.5vw, 36px); margin-bottom: 20px;">
         Perguntas Frequentes
       </h2>
 
@@ -1436,7 +1519,7 @@
         <div class="faq-a">Você tem 7 dias de garantia incondicional. Se não sentir diferença na temperatura do seu relacionamento, devolvemos 100% do valor sem burocracia e sem perguntas. O risco é zero — o único risco real é não tentar.</div>
       </div>
 
-      <div style="margin-top: 28px;">
+      <div style="margin-top: 28px;" class="reveal-on-scroll">
         <a href="#oferta" class="cta">COMECE PELA INTIMIDADE AGORA 🔥</a>
       </div>
     </div>
@@ -1518,6 +1601,20 @@
       showNextSalesPopup();
       setInterval(showNextSalesPopup, 22000);
     }, 7000);
+
+    // ---------- Reveal on Scroll (new) ----------
+    document.addEventListener('DOMContentLoaded', function () {
+      const revealScrollEls = document.querySelectorAll('.reveal-on-scroll');
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            scrollObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealScrollEls.forEach((el) => scrollObserver.observe(el));
+    });
   </script>
 </body>
 
